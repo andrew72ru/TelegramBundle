@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace TelegramBundle\Controller;
 
@@ -9,7 +10,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use TelegramBundle\Exceptions\TelegramException;
 use TelegramBundle\Interfaces\SendMessageInterface;
-use TelegramBundle\SendMessageService;
 
 /**
  * Class ClientController
@@ -18,7 +18,7 @@ use TelegramBundle\SendMessageService;
 class ClientController extends AbstractController
 {
     /**
-     * @var SendMessageService
+     * @var SendMessageInterface
      */
     private $sendMessageService;
 
@@ -29,9 +29,6 @@ class ClientController extends AbstractController
 
     /**
      * ClientController constructor.
-     *
-     * @param SendMessageInterface   $sendMessage
-     * @param LoggerInterface $logger
      */
     public function __construct(SendMessageInterface $sendMessage, LoggerInterface $logger)
     {
@@ -39,11 +36,6 @@ class ClientController extends AbstractController
         $this->logger = $logger;
     }
 
-    /**
-     * @param Request $request
-     *
-     * @return JsonResponse
-     */
     public function indexAction(Request $request): JsonResponse
     {
         $this->logger->info($request->getContent());

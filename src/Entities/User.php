@@ -22,17 +22,17 @@ class User extends AbstractEntity
     /**
      * @var bool True, if this user is a bot
      */
-    private $is_bot = false;
+    private $isBot = false;
 
     /**
      * @var string User‘s or bot’s first name
      */
-    private $first_name;
+    private $firstName;
 
     /**
      * @var string|null Optional. User‘s or bot’s last name
      */
-    private $last_name;
+    private $lastName;
 
     /**
      * @var string|null Optional. User‘s or bot’s username
@@ -44,22 +44,7 @@ class User extends AbstractEntity
      *
      * @see https://en.wikipedia.org/wiki/IETF_language_tag
      */
-    private $language_code;
-
-    /**
-     * User constructor.
-     *
-     * @param \StdClass $user
-     */
-    public function __construct(\StdClass $user)
-    {
-        foreach (get_object_vars($this) as $objectVar => $value) {
-            $method = AbstractEntity::formatString($objectVar);
-            if (method_exists($this, $method) && property_exists($user, $objectVar)) {
-                $this->{$method}($user->{$objectVar});
-            }
-        }
-    }
+    private $languageCode;
 
     /**
      * @return int
@@ -71,13 +56,11 @@ class User extends AbstractEntity
 
     /**
      * @param int $id
-     *
      * @return User
      */
     public function setId(int $id): self
     {
         $this->id = $id;
-
         return $this;
     }
 
@@ -86,18 +69,16 @@ class User extends AbstractEntity
      */
     public function isBot(): bool
     {
-        return $this->is_bot;
+        return $this->isBot;
     }
 
     /**
-     * @param bool $is_bot
-     *
+     * @param bool $isBot
      * @return User
      */
-    public function setIsBot(bool $is_bot): self
+    public function setIsBot(bool $isBot): self
     {
-        $this->is_bot = $is_bot;
-
+        $this->isBot = $isBot;
         return $this;
     }
 
@@ -106,18 +87,16 @@ class User extends AbstractEntity
      */
     public function getFirstName(): string
     {
-        return $this->first_name;
+        return $this->firstName;
     }
 
     /**
-     * @param string $first_name
-     *
+     * @param string $firstName
      * @return User
      */
-    public function setFirstName(string $first_name): self
+    public function setFirstName(string $firstName): self
     {
-        $this->first_name = $first_name;
-
+        $this->firstName = $firstName;
         return $this;
     }
 
@@ -126,18 +105,16 @@ class User extends AbstractEntity
      */
     public function getLastName(): ?string
     {
-        return $this->last_name;
+        return $this->lastName;
     }
 
     /**
-     * @param string|null $last_name
-     *
+     * @param string|null $lastName
      * @return User
      */
-    public function setLastName(?string $last_name): self
+    public function setLastName(?string $lastName): self
     {
-        $this->last_name = $last_name;
-
+        $this->lastName = $lastName;
         return $this;
     }
 
@@ -151,13 +128,11 @@ class User extends AbstractEntity
 
     /**
      * @param string|null $username
-     *
      * @return User
      */
     public function setUsername(?string $username): self
     {
         $this->username = $username;
-
         return $this;
     }
 
@@ -166,18 +141,17 @@ class User extends AbstractEntity
      */
     public function getLanguageCode(): ?string
     {
-        return $this->language_code;
+        return $this->languageCode;
     }
 
     /**
-     * @param string|null $language_code
-     *
+     * @param string|null $languageCode
      * @return User
      */
-    public function setLanguageCode(?string $language_code): self
+    public function setLanguageCode(?string $languageCode): self
     {
-        $this->language_code = $language_code;
-
+        $this->languageCode = $languageCode;
         return $this;
     }
+
 }

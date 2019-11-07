@@ -7,10 +7,9 @@
 
 namespace TelegramBundle\Interfaces;
 
-use GuzzleHttp\ClientInterface;
-use GuzzleHttp\Exception\GuzzleException;
-use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\UriInterface;
+
+use Symfony\Contracts\HttpClient\HttpClientInterface;
+use Symfony\Contracts\HttpClient\ResponseInterface;
 
 /**
  * Interface MethodInterface
@@ -28,14 +27,12 @@ interface MethodInterface
     /**
      * Send message to bot url with parameters with http-client.
      *
-     * @param ClientInterface     $client
-     * @param UriInterface|string $url
+     * @param HttpClientInterface     $client
+     * @param string $url
      *
      * @return ResponseInterface
-     *
-     * @throws GuzzleException
      */
-    public function send(ClientInterface $client, $url): ResponseInterface;
+    public function send(HttpClientInterface $client, $url): ResponseInterface;
 
     /**
      * Return array with Telegram method parameters as keys and parameters keys as values.

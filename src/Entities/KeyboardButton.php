@@ -23,87 +23,11 @@ class KeyboardButton extends AbstractEntity
     /**
      * @var bool
      */
-    private $request_contact = false;
+    private $requestContact = false;
 
     /**
      * @var bool
      */
-    private $request_location = false;
+    private $requestLocation = false;
 
-    /**
-     * @return string|null
-     */
-    public function getText(): string
-    {
-        return $this->text;
-    }
-
-    /**
-     * @param string|null $text
-     *
-     * @return KeyboardButton
-     */
-    public function setText(string $text): self
-    {
-        $this->text = $text;
-
-        return $this;
-    }
-
-    /**
-     * @return bool
-     */
-    public function isRequestContact(): bool
-    {
-        return $this->request_contact;
-    }
-
-    /**
-     * @param bool $request_contact
-     *
-     * @return KeyboardButton
-     */
-    public function setRequestContact(bool $request_contact): self
-    {
-        $this->request_contact = $request_contact;
-
-        return $this;
-    }
-
-    /**
-     * @return bool
-     */
-    public function isRequestLocation(): bool
-    {
-        return $this->request_location;
-    }
-
-    /**
-     * @param bool $request_location
-     *
-     * @return KeyboardButton
-     */
-    public function setRequestLocation(bool $request_location): self
-    {
-        $this->request_location = $request_location;
-
-        return $this;
-    }
-
-    public function __invoke(): array
-    {
-        $result = [
-            'text' => $this->getText(),
-        ];
-
-        if ($this->isRequestContact()) {
-            $result['request_contact'] = $this->isRequestContact();
-        }
-
-        if ($this->isRequestLocation()) {
-            $result['request_location'] = $this->isRequestLocation();
-        }
-
-        return $result;
-    }
 }

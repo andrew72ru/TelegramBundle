@@ -1,9 +1,5 @@
 <?php
-/**
- * User: andrew
- * Date: 29/05/2018
- * Time: 09:43.
- */
+declare(strict_types=1);
 
 namespace TelegramBundle\Events;
 

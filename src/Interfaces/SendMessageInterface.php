@@ -1,16 +1,10 @@
 <?php
-/**
- * User: andrew
- * Date: 29/03/2018
- * Time: 13:57.
- */
 
 declare(strict_types=1);
 
 namespace TelegramBundle\Interfaces;
 
-use GuzzleHttp\ClientInterface;
-use Psr\Http\Message\UriInterface;
+use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 /**
  * Interface SendMessageInterface.
@@ -18,14 +12,14 @@ use Psr\Http\Message\UriInterface;
 interface SendMessageInterface
 {
     /**
-     * @return ClientInterface
+     * @return HttpClientInterface
      */
-    public function getClient(): ClientInterface;
+    public function getClient(): HttpClientInterface;
 
     /**
      * @param string $method
      *
-     * @return UriInterface
+     * @return string
      */
-    public function getApiUrl(string $method): UriInterface;
+    public function getApiUrl(string $method): string;
 }

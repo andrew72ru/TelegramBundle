@@ -9,7 +9,4 @@ namespace TelegramBundle\Entities;
 
 class Contact
 {
-    public function __construct(\StdClass $contact)
-    {
-    }
 }

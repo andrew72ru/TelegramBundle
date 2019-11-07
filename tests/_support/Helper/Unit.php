@@ -23,9 +23,6 @@ class Unit extends Module
         $this->faker = Factory::create();
     }
 
-    /**
-     * @return Generator
-     */
     public function getFaker(): Generator
     {
         return $this->faker;

@@ -1,9 +1,5 @@
 <?php
-/**
- * User: andrew
- * Date: 28/05/2018
- * Time: 14:15.
- */
+declare(strict_types=1);
 
 namespace TelegramBundle\Interfaces;
 

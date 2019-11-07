@@ -9,17 +9,17 @@ declare(strict_types=1);
 
 namespace TelegramBundle;
 
+use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\HttpClient\HttpClient;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
+use Symfony\Contracts\HttpClient\HttpClientInterface;
+use TelegramBundle\Entities\Update;
 use TelegramBundle\Events\AbstractEvent;
 use TelegramBundle\Events\CallbackQueryEvent;
 use TelegramBundle\Events\CommandEvent;
 use TelegramBundle\Exceptions\TelegramException;
-use TelegramBundle\Entities\Update;
-use GuzzleHttp\ClientInterface;
-use GuzzleHttp\Psr7\Uri;
-use Psr\Http\Message\UriInterface;
-use Symfony\Component\DependencyInjection\ContainerInterface;
-use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Class SendMessage.
@@ -27,7 +27,7 @@ use Symfony\Component\HttpFoundation\Request;
 class SendMessageService implements Interfaces\SendMessageInterface
 {
     /**
-     * @var ClientInterface
+     * @var HttpClientInterface
      */
     private $client;
 
@@ -42,37 +42,46 @@ class SendMessageService implements Interfaces\SendMessageInterface
     private $dispatcher;
 
     /**
-     * SendMessage constructor.
-     *
-     * @param ContainerInterface       $container
-     * @param ClientInterface          $client
-     * @param EventDispatcherInterface $dispatcher
+     * @var SerializerInterface
      */
-    public function __construct(ContainerInterface $container, ClientInterface $client, EventDispatcherInterface $dispatcher)
+    private $serializer;
+
+    /**
+     * SendMessage constructor.
+     * @param ContainerInterface $container
+     * @param EventDispatcherInterface $dispatcher
+     * @param SerializerInterface $serializer
+     */
+    public function __construct(ContainerInterface $container, EventDispatcherInterface $dispatcher, SerializerInterface $serializer)
     {
-        $this->client = $client;
         $this->dispatcher = $dispatcher;
 
-        $this->apiUrl = rtrim($container->getParameter('telegram.api.url'), '/') . '/bot'
-            . $container->getParameter('telegram.api.token') . '/';
+        $this->apiUrl = sprintf('%s/bot%s/', rtrim($container->getParameter('telegram.api.url'), '/'), $container->getParameter('telegram.api.token'));
+
+        $this->client = HttpClient::create([
+            'http_version' => '2.0',
+            'headers' => [
+                'Content-Type' => 'application/json',
+            ],
+        ]);
+        $this->serializer = $serializer;
     }
 
     /**
-     * @return ClientInterface
+     * @return HttpClientInterface
      */
-    public function getClient(): ClientInterface
+    public function getClient(): HttpClientInterface
     {
         return $this->client;
     }
 
     /**
      * @param string|null $method
-     *
-     * @return UriInterface
+     * @return string
      */
-    public function getApiUrl(string $method): UriInterface
+    public function getApiUrl(string $method): string
     {
-        return new Uri($this->apiUrl . $method);
+        return sprintf('%s/%s', $this->apiUrl, ltrim($method, '/'));
     }
 
     /**
@@ -85,14 +94,18 @@ class SendMessageService implements Interfaces\SendMessageInterface
     public function processRequest(Request $request): Update
     {
         try {
-            $requestContent = json_decode($request->getContent(), false, 512, JSON_THROW_ON_ERROR);
+            $requestContent = \json_decode($request->getContent(), false, 512, JSON_THROW_ON_ERROR);
         }
-        /* @noinspection PhpUndefinedClassInspection */
         catch (\JsonException $e) {
-            throw new TelegramException('Unable to decode request content: ' . $e->getMessage());
+            throw new TelegramException(\sprintf('Unable to decode request content: %s', $e->getMessage()));
         }
 
-        $update = new Update($requestContent);
+        try {
+            /** @var Update $update */
+            $update = $this->serializer->deserialize($requestContent, Update::class, 'json');
+        } catch (\Throwable $e) {
+            throw new TelegramException(\sprintf('Unable to deserialize content: %s', $e->getMessage()));
+        }
         $this->callEvent($request, $update);
 
         return $update;
@@ -106,12 +119,12 @@ class SendMessageService implements Interfaces\SendMessageInterface
     {
         $event = null;
         $name = null;
-        if ($update->getMessage() !== null) {
+        if (null !== $update->getMessage()) {
             $event = new CommandEvent($request, $update, $this);
             $name = CommandEvent::NAME;
         }
 
-        if ($update->getCallbackQuery() !== null) {
+        if (null !== $update->getCallbackQuery()) {
             $event = new CallbackQueryEvent($request, $update, $this);
             $name = CallbackQueryEvent::NAME;
         }

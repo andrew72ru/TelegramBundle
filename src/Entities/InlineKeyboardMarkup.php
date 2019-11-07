@@ -15,12 +15,12 @@ namespace TelegramBundle\Entities;
  */
 class InlineKeyboardMarkup extends AbstractEntity
 {
-    const PROPERTY_NAME = 'reply_markup';
+    public const PROPERTY_NAME = 'reply_markup';
 
-    const FIELD_NAME = 'inline_keyboard';
+    public const FIELD_NAME = 'inline_keyboard';
 
     /**
-     * @var array
+     * @var array|InlineKeyboardButton
      */
     private $inline_keyboard = [];
 
@@ -51,24 +51,7 @@ class InlineKeyboardMarkup extends AbstractEntity
      */
     public function addButton(InlineKeyboardButton $button): self
     {
-        $this->inline_keyboard[] = [$button()];
-
-        return $this;
-    }
-
-    /**
-     * @param InlineKeyboardButton[] $buttons
-     *
-     * @return InlineKeyboardMarkup
-     */
-    public function addButtonsString(array $buttons): self
-    {
-        $arr = [];
-        foreach ($buttons as $button) {
-            $arr[] = $button();
-        }
-
-        $this->inline_keyboard[] = $arr;
+        $this->inline_keyboard[] = [$button];
 
         return $this;
     }

@@ -9,11 +9,4 @@ namespace TelegramBundle\Interfaces;
 
 interface EntityInterface
 {
-    /**
-     * @param object|\StdClass $object
-     * @param string           $property
-     *
-     * @return \StdClass|array|string|null
-     */
-    public static function getProperty(\StdClass $object, string $property);
 }

@@ -9,7 +9,4 @@ namespace TelegramBundle\Entities;
 
 class Location extends AbstractEntity
 {
-    public function __construct(\StdClass $location)
-    {
-    }
 }

@@ -15,8 +15,6 @@ class MessageCest
     private $defaultMessage;
 
     /**
-     * @param \UnitTester $I
-     *
      * @throws TelegramException
      */
     public function _before(\UnitTester $I)
@@ -25,8 +23,6 @@ class MessageCest
     }
 
     /**
-     * @param \UnitTester $I
-     *
      * @throws TelegramException
      */
     public function tryToCreateClass(\UnitTester $I)
@@ -47,8 +43,6 @@ class MessageCest
     }
 
     /**
-     * @param \UnitTester $I
-     *
      * @throws TelegramException
      */
     public function setAndGetSourceMessage(\UnitTester $I)
@@ -133,8 +127,6 @@ class MessageCest
     }
 
     /**
-     * @param \UnitTester $I
-     *
      * @throws TelegramException
      */
     public function setAndGetReplyToMessage(\UnitTester $I)

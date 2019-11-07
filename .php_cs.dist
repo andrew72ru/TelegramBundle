@@ -1,14 +1,23 @@
 <?php
 
 $finder = PhpCsFixer\Finder::create()
-    ->in(__DIR__)
-    ->exclude('var')
-;
-
-return PhpCsFixer\Config::create()
-    ->setRules([
-        '@Symfony' => true,
-        'array_syntax' => ['syntax' => 'short'],
+    ->ignoreDotFiles(false)
+    ->ignoreVCS(true)
+    ->exclude([
+        'vendor',
     ])
-    ->setFinder($finder)
+    ->in(__DIR__ . '/src')
 ;
+$rules = [
+    '@Symfony' => true,
+    'new_with_braces' => false,
+    'phpdoc_inline_tag' => false,
+    'single_import_per_statement' => false,
+    'concat_space' => ['spacing' => 'one'],
+    'array_syntax' => ['syntax' => 'short'],
+];
+
+if (class_exists('\\PhpCsFixer\\Fixer\\ControlStructure\\YodaStyleFixer')) {
+    $rules['yoda_style'] = false;
+}
+return PhpCsFixer\Config::create()->setRules($rules)->setFinder($finder);

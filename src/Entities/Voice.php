@@ -7,9 +7,6 @@
 
 namespace TelegramBundle\Entities;
 
-class Voice extends AbstractEntity
+class Voice extends Document
 {
-    public function __construct(\StdClass $voice)
-    {
-    }
 }

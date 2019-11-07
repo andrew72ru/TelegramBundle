@@ -7,13 +7,12 @@
 
 namespace TelegramBundle\Entities;
 
-class Audio
+/**
+ * Class Audio.
+ * @see https://core.telegram.org/bots/api#audio
+ */
+class Audio extends Document
 {
-    /**
-     * @var string
-     */
-    private $file_id;
-
     /**
      * @var int
      */
@@ -30,51 +29,6 @@ class Audio
     private $title;
 
     /**
-     * @var string|null
-     */
-    private $mime_type;
-    /**
-     * @var int|null
-     */
-    private $file_size;
-
-    public function __construct(\StdClass $audio)
-    {
-        foreach (get_object_vars($this) as $objectVar => $value) {
-            if ($value) {
-                continue;
-            }
-
-            if (null !== AbstractEntity::getProperty($audio, $objectVar)) {
-                $method = AbstractEntity::formatString($objectVar);
-                if (method_exists($this, $method) && property_exists($audio, $objectVar)) {
-                    $this->{$method}($audio->{$objectVar});
-                }
-            }
-        }
-    }
-
-    /**
-     * @return string
-     */
-    public function getFileId(): string
-    {
-        return $this->file_id;
-    }
-
-    /**
-     * @param string $file_id
-     *
-     * @return Audio
-     */
-    public function setFileId(string $file_id): Audio
-    {
-        $this->file_id = $file_id;
-
-        return $this;
-    }
-
-    /**
      * @return int
      */
     public function getDuration(): int
@@ -84,13 +38,11 @@ class Audio
 
     /**
      * @param int $duration
-     *
      * @return Audio
      */
-    public function setDuration(int $duration): Audio
+    public function setDuration(int $duration): self
     {
         $this->duration = $duration;
-
         return $this;
     }
 
@@ -104,13 +56,11 @@ class Audio
 
     /**
      * @param string|null $performer
-     *
      * @return Audio
      */
-    public function setPerformer(?string $performer): Audio
+    public function setPerformer(?string $performer): self
     {
         $this->performer = $performer;
-
         return $this;
     }
 
@@ -124,53 +74,11 @@ class Audio
 
     /**
      * @param string|null $title
-     *
      * @return Audio
      */
-    public function setTitle(?string $title): Audio
+    public function setTitle(?string $title): self
     {
         $this->title = $title;
-
-        return $this;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getMimeType(): ?string
-    {
-        return $this->mime_type;
-    }
-
-    /**
-     * @param string|null $mime_type
-     *
-     * @return Audio
-     */
-    public function setMimeType(?string $mime_type): Audio
-    {
-        $this->mime_type = $mime_type;
-
-        return $this;
-    }
-
-    /**
-     * @return int|null
-     */
-    public function getFileSize(): ?int
-    {
-        return $this->file_size;
-    }
-
-    /**
-     * @param int|null $file_size
-     *
-     * @return Audio
-     */
-    public function setFileSize(?int $file_size): Audio
-    {
-        $this->file_size = $file_size;
-
         return $this;
     }
 }

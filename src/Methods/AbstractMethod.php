@@ -8,9 +8,10 @@
 namespace TelegramBundle\Methods;
 
 use GuzzleHttp\Exception\GuzzleException;
+use Symfony\Contracts\HttpClient\HttpClientInterface;
 use TelegramBundle\Interfaces\MethodInterface;
 use GuzzleHttp\ClientInterface;
-use Psr\Http\Message\ResponseInterface;
+use Symfony\Contracts\HttpClient\ResponseInterface;
 use Psr\Http\Message\UriInterface;
 
 /**
@@ -18,13 +19,9 @@ use Psr\Http\Message\UriInterface;
  */
 abstract class AbstractMethod implements MethodInterface
 {
-    public static $curl = [
-        CURLOPT_RESOLVE => ['api.telegram.org:443:149.154.167.220'],
-//        CURLOPT_PROXY => 'dplbo.tgvpnproxy.me',
-//        CURLOPT_PROXYTYPE => CURLPROXY_SOCKS5,
-//        CURLOPT_PROXYUSERPWD => 'telegram:telegram',
-//        CURLOPT_PROXYPORT => 1080,
-    ];
+//    public static $curl = [
+//        CURLOPT_RESOLVE => ['api.telegram.org:443:149.154.167.220'],
+//    ];
 
     protected static $defaultOptions = [
         'parse_mode' => 'Markdown',
@@ -33,32 +30,19 @@ abstract class AbstractMethod implements MethodInterface
     /**
      * Send message to bot url with parameters with http-client.
      *
-     * @param ClientInterface     $client
+     * @param HttpClientInterface     $client
      * @param UriInterface|string $url
      *
      * @return ResponseInterface
-     *
-     * @throws GuzzleException
      */
-    public function send(ClientInterface $client, $url): ResponseInterface
+    public function send(HttpClientInterface $client, $url): ResponseInterface
     {
-        return $client->request('POST', $url, [
-            'form_params' => $this->__toArray(),
-            'sink' => '/tmp/' . uniqid('sink-', true),
-            'curl' => self::$curl,
-        ]);
-    }
-
-    /**
-     * @param array $options
-     *
-     * @return MethodInterface
-     */
-    protected function setCurlOptions(array $options): MethodInterface
-    {
-        self::$curl = array_merge(self::$curl, $options);
-
-        return $this;
+        // TODO Refactor
+//        return $client->request('POST', $url, [
+//            'form_params' => $this->__toArray(),
+//            'sink' => '/tmp/' . uniqid('sink-', true),
+//            'curl' => self::$curl,
+//        ]);
     }
 
     /**

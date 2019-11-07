@@ -54,8 +54,6 @@ class UpdateCest
     }
 
     /**
-     * @param \UnitTester $I
-     *
      * @throws \Exception
      */
     public function setAndGetAnswer(\UnitTester $I)
@@ -69,8 +67,6 @@ class UpdateCest
     }
 
     /**
-     * @param \UnitTester $I
-     *
      * @throws \Exception
      */
     public function setAndGetResponse(\UnitTester $I)
@@ -85,8 +81,6 @@ class UpdateCest
     }
 
     /**
-     * @param \UnitTester $I
-     *
      * @throws TelegramException
      */
     public function setAndGetEditedMessage(\UnitTester $I)
@@ -97,8 +91,6 @@ class UpdateCest
     }
 
     /**
-     * @param \UnitTester $I
-     *
      * @throws TelegramException
      */
     public function setAndGetChannelPost(\UnitTester $I)

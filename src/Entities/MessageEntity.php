@@ -7,6 +7,10 @@
 
 namespace TelegramBundle\Entities;
 
+/**
+ * Class MessageEntity.
+ * @see https://core.telegram.org/bots/api#messageentity
+ */
 class MessageEntity extends AbstractEntity
 {
     public const E_HASHTAG = 'hashtag';
@@ -48,21 +52,6 @@ class MessageEntity extends AbstractEntity
     private $user;
 
     /**
-     * MessageEntity constructor.
-     *
-     * @param \StdClass $entity
-     */
-    public function __construct(\StdClass $entity)
-    {
-        foreach (get_object_vars($this) as $objectVar => $value) {
-            $method = self::formatString($objectVar);
-            if (method_exists($this, $method) && property_exists($entity, $objectVar)) {
-                $this->{$method}($entity->{$objectVar});
-            }
-        }
-    }
-
-    /**
      * @return string
      */
     public function getType(): string
@@ -72,13 +61,11 @@ class MessageEntity extends AbstractEntity
 
     /**
      * @param string $type
-     *
      * @return MessageEntity
      */
     public function setType(string $type): MessageEntity
     {
         $this->type = $type;
-
         return $this;
     }
 
@@ -92,13 +79,11 @@ class MessageEntity extends AbstractEntity
 
     /**
      * @param int $offset
-     *
      * @return MessageEntity
      */
     public function setOffset(int $offset): MessageEntity
     {
         $this->offset = $offset;
-
         return $this;
     }
 
@@ -112,13 +97,11 @@ class MessageEntity extends AbstractEntity
 
     /**
      * @param int $length
-     *
      * @return MessageEntity
      */
     public function setLength(int $length): MessageEntity
     {
         $this->length = $length;
-
         return $this;
     }
 
@@ -132,13 +115,11 @@ class MessageEntity extends AbstractEntity
 
     /**
      * @param string|null $url
-     *
      * @return MessageEntity
      */
     public function setUrl(?string $url): MessageEntity
     {
         $this->url = $url;
-
         return $this;
     }
 
@@ -152,13 +133,11 @@ class MessageEntity extends AbstractEntity
 
     /**
      * @param User|null $user
-     *
      * @return MessageEntity
      */
     public function setUser(?User $user): MessageEntity
     {
         $this->user = $user;
-
         return $this;
     }
 }
