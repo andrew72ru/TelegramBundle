@@ -1,0 +1,39 @@
+parameters:
+  telegram:
+    name:
+    username:
+    api:
+      url:
+      token:
+      proxy:
+
+services:
+#  TelegramBundle\Interfaces\SendMessageInterface: '@telegram.telegram'
+#  TelegramBundle\Controller\ClientController: '@telegram.webhook.controller'
+  GuzzleHttp\Client: '@guzzle.client'
+  TelegramBundle\Interfaces\TgEventSubscriberInterface: '@telegram.event.subscriber'
+
+  guzzle.client:
+      class: GuzzleHttp\Client
+
+  TelegramBundle\Interfaces\SendMessageInterface:
+      class: TelegramBundle\SendMessageService
+      public: true
+      arguments:
+        - '@service_container'
+        - '@guzzle.client'
+        - '@event_dispatcher'
+
+  TelegramBundle\Controller\ClientController:
+      class: TelegramBundle\Controller\ClientController
+      public: true
+      arguments:
+        - '@TelegramBundle\Interfaces\SendMessageInterface'
+        - '@monolog.logger'
+      tags: [ 'controller.service_arguments' ]
+
+  TelegramBundle\Controller\:
+      resource: '../../Controller'
+      public: true
+      tags: ['controller.service_arguments']
+      exclude: '../../Controller/ClientController.php'
