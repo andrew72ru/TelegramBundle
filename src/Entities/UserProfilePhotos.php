@@ -1,15 +1,15 @@
 <?php
 /**
- * 08.11.2019
+ * 08.11.2019.
  */
 
 declare(strict_types=1);
 
-
 namespace TelegramBundle\Entities;
 
 /**
- * Class UserProfilePhotos
+ * Class UserProfilePhotos.
+ *
  * @see https://core.telegram.org/bots/api#userprofilephotos
  */
 class UserProfilePhotos
@@ -34,11 +34,13 @@ class UserProfilePhotos
 
     /**
      * @param int $totalCount
+     *
      * @return UserProfilePhotos
      */
     public function setTotalCount(int $totalCount): self
     {
         $this->totalCount = $totalCount;
+
         return $this;
     }
 
@@ -52,11 +54,13 @@ class UserProfilePhotos
 
     /**
      * @param array|PhotoSize[] $photos
+     *
      * @return UserProfilePhotos
      */
     public function setPhotos($photos): self
     {
         $this->photos = $photos;
+
         return $this;
     }
 }

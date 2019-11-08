@@ -14,7 +14,7 @@ namespace TelegramBundle\Entities;
  *
  * @see https://core.telegram.org/bots/api#callbackquery
  */
-class CallbackQuery extends AbstractEntity
+class CallbackQuery
 {
     /**
      * @var string
@@ -61,11 +61,13 @@ class CallbackQuery extends AbstractEntity
 
     /**
      * @param string $id
+     *
      * @return CallbackQuery
      */
     public function setId(string $id): self
     {
         $this->id = $id;
+
         return $this;
     }
 
@@ -79,11 +81,13 @@ class CallbackQuery extends AbstractEntity
 
     /**
      * @param User $from
+     *
      * @return CallbackQuery
      */
     public function setFrom(User $from): self
     {
         $this->from = $from;
+
         return $this;
     }
 
@@ -97,11 +101,13 @@ class CallbackQuery extends AbstractEntity
 
     /**
      * @param Message|null $message
+     *
      * @return CallbackQuery
      */
     public function setMessage(?Message $message): self
     {
         $this->message = $message;
+
         return $this;
     }
 
@@ -115,11 +121,13 @@ class CallbackQuery extends AbstractEntity
 
     /**
      * @param string|null $inlineMessageId
+     *
      * @return CallbackQuery
      */
     public function setInlineMessageId(?string $inlineMessageId): self
     {
         $this->inlineMessageId = $inlineMessageId;
+
         return $this;
     }
 
@@ -133,11 +141,13 @@ class CallbackQuery extends AbstractEntity
 
     /**
      * @param string $chatInstance
+     *
      * @return CallbackQuery
      */
     public function setChatInstance(string $chatInstance): self
     {
         $this->chatInstance = $chatInstance;
+
         return $this;
     }
 
@@ -151,11 +161,13 @@ class CallbackQuery extends AbstractEntity
 
     /**
      * @param string|null $data
+     *
      * @return CallbackQuery
      */
     public function setData(?string $data): self
     {
         $this->data = $data;
+
         return $this;
     }
 
@@ -169,11 +181,13 @@ class CallbackQuery extends AbstractEntity
 
     /**
      * @param string|null $gameShortName
+     *
      * @return CallbackQuery
      */
     public function setGameShortName(?string $gameShortName): self
     {
         $this->gameShortName = $gameShortName;
+
         return $this;
     }
 }

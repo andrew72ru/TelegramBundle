@@ -86,4 +86,263 @@ class Chat
      */
     private $canSetStickerSet;
 
+    /**
+     * @return int
+     */
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     *
+     * @return Chat
+     */
+    public function setId(int $id): self
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getType(): string
+    {
+        return $this->type;
+    }
+
+    /**
+     * @param string $type
+     *
+     * @return Chat
+     */
+    public function setType(string $type): self
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getTitle(): ?string
+    {
+        return $this->title;
+    }
+
+    /**
+     * @param string|null $title
+     *
+     * @return Chat
+     */
+    public function setTitle(?string $title): self
+    {
+        $this->title = $title;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getUsername(): ?string
+    {
+        return $this->username;
+    }
+
+    /**
+     * @param string|null $username
+     *
+     * @return Chat
+     */
+    public function setUsername(?string $username): self
+    {
+        $this->username = $username;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getFirstName(): ?string
+    {
+        return $this->firstName;
+    }
+
+    /**
+     * @param string|null $firstName
+     *
+     * @return Chat
+     */
+    public function setFirstName(?string $firstName): self
+    {
+        $this->firstName = $firstName;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getLastName(): ?string
+    {
+        return $this->lastName;
+    }
+
+    /**
+     * @param string|null $lastName
+     *
+     * @return Chat
+     */
+    public function setLastName(?string $lastName): self
+    {
+        $this->lastName = $lastName;
+
+        return $this;
+    }
+
+    /**
+     * @return bool|null
+     */
+    public function getAllMembersAreAdministrators(): ?bool
+    {
+        return $this->allMembersAreAdministrators;
+    }
+
+    /**
+     * @param bool|null $allMembersAreAdministrators
+     *
+     * @return Chat
+     */
+    public function setAllMembersAreAdministrators(?bool $allMembersAreAdministrators): self
+    {
+        $this->allMembersAreAdministrators = $allMembersAreAdministrators;
+
+        return $this;
+    }
+
+    /**
+     * @return ChatPhoto|null
+     */
+    public function getPhoto(): ?ChatPhoto
+    {
+        return $this->photo;
+    }
+
+    /**
+     * @param ChatPhoto|null $photo
+     *
+     * @return Chat
+     */
+    public function setPhoto(?ChatPhoto $photo): self
+    {
+        $this->photo = $photo;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param string|null $description
+     *
+     * @return Chat
+     */
+    public function setDescription(?string $description): self
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getInviteLink(): ?string
+    {
+        return $this->inviteLink;
+    }
+
+    /**
+     * @param string|null $inviteLink
+     *
+     * @return Chat
+     */
+    public function setInviteLink(?string $inviteLink): self
+    {
+        $this->inviteLink = $inviteLink;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getPinnedMessage(): ?string
+    {
+        return $this->pinnedMessage;
+    }
+
+    /**
+     * @param string|null $pinnedMessage
+     *
+     * @return Chat
+     */
+    public function setPinnedMessage(?string $pinnedMessage): self
+    {
+        $this->pinnedMessage = $pinnedMessage;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getStickerSetName(): ?string
+    {
+        return $this->stickerSetName;
+    }
+
+    /**
+     * @param string|null $stickerSetName
+     *
+     * @return Chat
+     */
+    public function setStickerSetName(?string $stickerSetName): self
+    {
+        $this->stickerSetName = $stickerSetName;
+
+        return $this;
+    }
+
+    /**
+     * @return bool|null
+     */
+    public function getCanSetStickerSet(): ?bool
+    {
+        return $this->canSetStickerSet;
+    }
+
+    /**
+     * @param bool|null $canSetStickerSet
+     *
+     * @return Chat
+     */
+    public function setCanSetStickerSet(?bool $canSetStickerSet): self
+    {
+        $this->canSetStickerSet = $canSetStickerSet;
+
+        return $this;
+    }
 }

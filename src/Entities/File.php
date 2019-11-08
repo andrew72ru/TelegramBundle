@@ -1,15 +1,15 @@
 <?php
 /**
- * 08.11.2019
+ * 08.11.2019.
  */
 
 declare(strict_types=1);
 
-
 namespace TelegramBundle\Entities;
 
 /**
- * Class File
+ * Class File.
+ *
  * @see https://core.telegram.org/bots/api#file
  */
 class File
@@ -39,11 +39,13 @@ class File
 
     /**
      * @param string $fileId
+     *
      * @return File
      */
     public function setFileId(string $fileId): self
     {
         $this->fileId = $fileId;
+
         return $this;
     }
 
@@ -57,11 +59,13 @@ class File
 
     /**
      * @param int|null $fileSize
+     *
      * @return File
      */
     public function setFileSize(?int $fileSize): self
     {
         $this->fileSize = $fileSize;
+
         return $this;
     }
 
@@ -75,11 +79,13 @@ class File
 
     /**
      * @param string|null $filePath
+     *
      * @return File
      */
     public function setFilePath(?string $filePath): self
     {
         $this->filePath = $filePath;
+
         return $this;
     }
 }

@@ -8,7 +8,8 @@
 namespace TelegramBundle\Entities;
 
 /**
- * Class Video
+ * Class Video.
+ *
  * @see https://core.telegram.org/bots/api#video
  */
 class Video extends BaseVideo

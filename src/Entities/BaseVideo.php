@@ -1,13 +1,11 @@
 <?php
 /**
- * 08.11.2019
+ * 08.11.2019.
  */
 
 declare(strict_types=1);
 
-
 namespace TelegramBundle\Entities;
-
 
 abstract class BaseVideo
 {
@@ -56,11 +54,13 @@ abstract class BaseVideo
 
     /**
      * @param string $fileId
+     *
      * @return self
      */
     public function setFileId(string $fileId): self
     {
         $this->fileId = $fileId;
+
         return $this;
     }
 
@@ -74,11 +74,13 @@ abstract class BaseVideo
 
     /**
      * @param int $width
+     *
      * @return self
      */
     public function setWidth(int $width): self
     {
         $this->width = $width;
+
         return $this;
     }
 
@@ -92,11 +94,13 @@ abstract class BaseVideo
 
     /**
      * @param int $height
+     *
      * @return self
      */
     public function setHeight(int $height): self
     {
         $this->height = $height;
+
         return $this;
     }
 
@@ -110,11 +114,13 @@ abstract class BaseVideo
 
     /**
      * @param int $duration
+     *
      * @return self
      */
     public function setDuration(int $duration): self
     {
         $this->duration = $duration;
+
         return $this;
     }
 
@@ -128,11 +134,13 @@ abstract class BaseVideo
 
     /**
      * @param PhotoSize|null $thumb
+     *
      * @return self
      */
     public function setThumb(?PhotoSize $thumb): self
     {
         $this->thumb = $thumb;
+
         return $this;
     }
 
@@ -146,11 +154,13 @@ abstract class BaseVideo
 
     /**
      * @param string|null $mimeType
+     *
      * @return self
      */
     public function setMimeType(?string $mimeType): self
     {
         $this->mimeType = $mimeType;
+
         return $this;
     }
 
@@ -164,12 +174,13 @@ abstract class BaseVideo
 
     /**
      * @param int|null $fileSize
+     *
      * @return self
      */
     public function setFileSize(?int $fileSize): self
     {
         $this->fileSize = $fileSize;
+
         return $this;
     }
-
 }

@@ -7,7 +7,6 @@
 
 namespace TelegramBundle\Interfaces;
 
-
 use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 use Symfony\Contracts\HttpClient\ResponseInterface;
@@ -29,10 +28,11 @@ interface MethodInterface
      * Send message to bot url with parameters with http-client.
      *
      * @param HttpClientInterface $client
-     * @param string $url
+     * @param string              $url
+     * @param array               $options
      *
-     * @param array $options
      * @return ResponseInterface
+     *
      * @throws TransportExceptionInterface
      */
     public function send(HttpClientInterface $client, $url, array $options = []): ResponseInterface;

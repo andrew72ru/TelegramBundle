@@ -1,15 +1,15 @@
 <?php
 /**
- * 07.11.2019
+ * 07.11.2019.
  */
 
 declare(strict_types=1);
 
-
 namespace TelegramBundle\Entities;
 
 /**
- * Class ChatPhoto
+ * Class ChatPhoto.
+ *
  * @see https://core.telegram.org/bots/api#chatphoto
  */
 class ChatPhoto
@@ -34,11 +34,13 @@ class ChatPhoto
 
     /**
      * @param string $smallFileId
+     *
      * @return ChatPhoto
      */
     public function setSmallFileId(string $smallFileId): self
     {
         $this->smallFileId = $smallFileId;
+
         return $this;
     }
 
@@ -52,11 +54,13 @@ class ChatPhoto
 
     /**
      * @param string $bigFileId
+     *
      * @return ChatPhoto
      */
     public function setBigFileId(string $bigFileId): self
     {
         $this->bigFileId = $bigFileId;
+
         return $this;
     }
 }

@@ -1,10 +1,11 @@
 <?php
+
 declare(strict_types=1);
 
 namespace TelegramBundle\Events;
 
-use Symfony\Contracts\EventDispatcher\Event;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Contracts\EventDispatcher\Event;
 use TelegramBundle\Entities\Update;
 use TelegramBundle\Interfaces\SendMessageInterface;
 use TelegramBundle\Interfaces\TelegramEventInterface;

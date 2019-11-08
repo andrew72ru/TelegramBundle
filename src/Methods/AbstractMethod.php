@@ -7,11 +7,11 @@
 
 namespace TelegramBundle\Methods;
 
+use Psr\Http\Message\UriInterface;
 use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
-use TelegramBundle\Interfaces\MethodInterface;
 use Symfony\Contracts\HttpClient\ResponseInterface;
-use Psr\Http\Message\UriInterface;
+use TelegramBundle\Interfaces\MethodInterface;
 
 /**
  * Class AbstractMethod.
@@ -27,9 +27,10 @@ abstract class AbstractMethod implements MethodInterface
      *
      * @param HttpClientInterface $client
      * @param UriInterface|string $url
+     * @param array               $options
      *
-     * @param array $options
      * @return ResponseInterface
+     *
      * @throws TransportExceptionInterface
      */
     public function send(HttpClientInterface $client, $url, $options = []): ResponseInterface

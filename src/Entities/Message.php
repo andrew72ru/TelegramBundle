@@ -7,15 +7,13 @@
 
 namespace TelegramBundle\Entities;
 
-use TelegramBundle\Exceptions\TelegramException;
-
 /**
  * Class Message
  * Implements telegram message.
  *
  * @see https://core.telegram.org/bots/api#message
  */
-class Message extends AbstractEntity
+class Message
 {
     /**
      * @var string
@@ -224,12 +222,14 @@ class Message extends AbstractEntity
 
     /**
      * @var \StdClass|null
+     *
      * @todo implement
      */
     private $invoice;
 
     /**
      * @var \StdClass|null
+     *
      * @todo implement
      */
     private $successfulPayment;
@@ -241,6 +241,7 @@ class Message extends AbstractEntity
 
     /**
      * @var \StdClass|null
+     *
      * @todo implement
      */
     private $passportData;
@@ -260,11 +261,13 @@ class Message extends AbstractEntity
 
     /**
      * @param string $messageId
+     *
      * @return Message
      */
     public function setMessageId(string $messageId): self
     {
         $this->messageId = $messageId;
+
         return $this;
     }
 
@@ -278,11 +281,13 @@ class Message extends AbstractEntity
 
     /**
      * @param User $from
+     *
      * @return Message
      */
     public function setFrom(User $from): self
     {
         $this->from = $from;
+
         return $this;
     }
 
@@ -296,11 +301,13 @@ class Message extends AbstractEntity
 
     /**
      * @param int $date
+     *
      * @return Message
      */
     public function setDate(int $date): self
     {
         $this->date = $date;
+
         return $this;
     }
 
@@ -314,11 +321,13 @@ class Message extends AbstractEntity
 
     /**
      * @param Chat $chat
+     *
      * @return Message
      */
     public function setChat(Chat $chat): self
     {
         $this->chat = $chat;
+
         return $this;
     }
 
@@ -332,11 +341,13 @@ class Message extends AbstractEntity
 
     /**
      * @param User|null $forwardFrom
+     *
      * @return Message
      */
     public function setForwardFrom(?User $forwardFrom): self
     {
         $this->forwardFrom = $forwardFrom;
+
         return $this;
     }
 
@@ -350,11 +361,13 @@ class Message extends AbstractEntity
 
     /**
      * @param Chat|null $forwardFromChat
+     *
      * @return Message
      */
     public function setForwardFromChat(?Chat $forwardFromChat): self
     {
         $this->forwardFromChat = $forwardFromChat;
+
         return $this;
     }
 
@@ -368,11 +381,13 @@ class Message extends AbstractEntity
 
     /**
      * @param int|null $forwardFromMessageId
+     *
      * @return Message
      */
     public function setForwardFromMessageId(?int $forwardFromMessageId): self
     {
         $this->forwardFromMessageId = $forwardFromMessageId;
+
         return $this;
     }
 
@@ -386,11 +401,13 @@ class Message extends AbstractEntity
 
     /**
      * @param string|null $forwardSignature
+     *
      * @return Message
      */
     public function setForwardSignature(?string $forwardSignature): self
     {
         $this->forwardSignature = $forwardSignature;
+
         return $this;
     }
 
@@ -404,11 +421,13 @@ class Message extends AbstractEntity
 
     /**
      * @param int|null $forwardDate
+     *
      * @return Message
      */
     public function setForwardDate(?int $forwardDate): self
     {
         $this->forwardDate = $forwardDate;
+
         return $this;
     }
 
@@ -422,11 +441,13 @@ class Message extends AbstractEntity
 
     /**
      * @param Message|null $replyToMessage
+     *
      * @return Message
      */
     public function setReplyToMessage(?Message $replyToMessage): self
     {
         $this->replyToMessage = $replyToMessage;
+
         return $this;
     }
 
@@ -440,11 +461,13 @@ class Message extends AbstractEntity
 
     /**
      * @param int|null $editDate
+     *
      * @return Message
      */
     public function setEditDate(?int $editDate): self
     {
         $this->editDate = $editDate;
+
         return $this;
     }
 
@@ -458,11 +481,13 @@ class Message extends AbstractEntity
 
     /**
      * @param string|null $mediaGroupId
+     *
      * @return Message
      */
     public function setMediaGroupId(?string $mediaGroupId): self
     {
         $this->mediaGroupId = $mediaGroupId;
+
         return $this;
     }
 
@@ -476,11 +501,13 @@ class Message extends AbstractEntity
 
     /**
      * @param string|null $authorSignature
+     *
      * @return Message
      */
     public function setAuthorSignature(?string $authorSignature): self
     {
         $this->authorSignature = $authorSignature;
+
         return $this;
     }
 
@@ -494,11 +521,13 @@ class Message extends AbstractEntity
 
     /**
      * @param string|null $text
+     *
      * @return Message
      */
     public function setText(?string $text): self
     {
         $this->text = $text;
+
         return $this;
     }
 
@@ -512,11 +541,13 @@ class Message extends AbstractEntity
 
     /**
      * @param array|MessageEntity[] $entities
+     *
      * @return Message
      */
     public function setEntities($entities)
     {
         $this->entities = $entities;
+
         return $this;
     }
 
@@ -530,11 +561,13 @@ class Message extends AbstractEntity
 
     /**
      * @param MessageEntity[]|null $captionEntities
+     *
      * @return Message
      */
     public function setCaptionEntities(?array $captionEntities): self
     {
         $this->captionEntities = $captionEntities;
+
         return $this;
     }
 
@@ -548,11 +581,13 @@ class Message extends AbstractEntity
 
     /**
      * @param Audio|null $audio
+     *
      * @return Message
      */
     public function setAudio(?Audio $audio): self
     {
         $this->audio = $audio;
+
         return $this;
     }
 
@@ -566,11 +601,13 @@ class Message extends AbstractEntity
 
     /**
      * @param Document|null $document
+     *
      * @return Message
      */
     public function setDocument(?Document $document): self
     {
         $this->document = $document;
+
         return $this;
     }
 
@@ -584,11 +621,13 @@ class Message extends AbstractEntity
 
     /**
      * @param Animation|null $animation
+     *
      * @return Message
      */
     public function setAnimation(?Animation $animation): self
     {
         $this->animation = $animation;
+
         return $this;
     }
 
@@ -602,11 +641,13 @@ class Message extends AbstractEntity
 
     /**
      * @param \StdClass|null $game
+     *
      * @return Message
      */
     public function setGame(?\StdClass $game): self
     {
         $this->game = $game;
+
         return $this;
     }
 
@@ -620,11 +661,13 @@ class Message extends AbstractEntity
 
     /**
      * @param PhotoSize[]|null $photo
+     *
      * @return Message
      */
     public function setPhoto(?array $photo): self
     {
         $this->photo = $photo;
+
         return $this;
     }
 
@@ -638,11 +681,13 @@ class Message extends AbstractEntity
 
     /**
      * @param Sticker|null $sticker
+     *
      * @return Message
      */
     public function setSticker(?Sticker $sticker): self
     {
         $this->sticker = $sticker;
+
         return $this;
     }
 
@@ -656,11 +701,13 @@ class Message extends AbstractEntity
 
     /**
      * @param Video|null $video
+     *
      * @return Message
      */
     public function setVideo(?Video $video): self
     {
         $this->video = $video;
+
         return $this;
     }
 
@@ -674,11 +721,13 @@ class Message extends AbstractEntity
 
     /**
      * @param Voice|null $voice
+     *
      * @return Message
      */
     public function setVoice(?Voice $voice): self
     {
         $this->voice = $voice;
+
         return $this;
     }
 
@@ -692,11 +741,13 @@ class Message extends AbstractEntity
 
     /**
      * @param VideoNote|null $videoNote
+     *
      * @return Message
      */
     public function setVideoNote(?VideoNote $videoNote): self
     {
         $this->videoNote = $videoNote;
+
         return $this;
     }
 
@@ -710,11 +761,13 @@ class Message extends AbstractEntity
 
     /**
      * @param string|null $caption
+     *
      * @return Message
      */
     public function setCaption(?string $caption): self
     {
         $this->caption = $caption;
+
         return $this;
     }
 
@@ -728,11 +781,13 @@ class Message extends AbstractEntity
 
     /**
      * @param Contact|null $contact
+     *
      * @return Message
      */
     public function setContact(?Contact $contact): self
     {
         $this->contact = $contact;
+
         return $this;
     }
 
@@ -746,11 +801,13 @@ class Message extends AbstractEntity
 
     /**
      * @param Location|null $location
+     *
      * @return Message
      */
     public function setLocation(?Location $location): self
     {
         $this->location = $location;
+
         return $this;
     }
 
@@ -764,11 +821,13 @@ class Message extends AbstractEntity
 
     /**
      * @param Venue|null $venue
+     *
      * @return Message
      */
     public function setVenue(?Venue $venue): self
     {
         $this->venue = $venue;
+
         return $this;
     }
 
@@ -782,11 +841,13 @@ class Message extends AbstractEntity
 
     /**
      * @param Pool|null $poll
+     *
      * @return Message
      */
     public function setPoll(?Pool $poll): self
     {
         $this->poll = $poll;
+
         return $this;
     }
 
@@ -800,11 +861,13 @@ class Message extends AbstractEntity
 
     /**
      * @param User[]|null $newChatMembers
+     *
      * @return Message
      */
     public function setNewChatMembers(?array $newChatMembers): self
     {
         $this->newChatMembers = $newChatMembers;
+
         return $this;
     }
 
@@ -818,11 +881,13 @@ class Message extends AbstractEntity
 
     /**
      * @param User|null $leftChatMember
+     *
      * @return Message
      */
     public function setLeftChatMember(?User $leftChatMember): self
     {
         $this->leftChatMember = $leftChatMember;
+
         return $this;
     }
 
@@ -836,11 +901,13 @@ class Message extends AbstractEntity
 
     /**
      * @param string|null $newChatTitle
+     *
      * @return Message
      */
     public function setNewChatTitle(?string $newChatTitle): self
     {
         $this->newChatTitle = $newChatTitle;
+
         return $this;
     }
 
@@ -854,11 +921,13 @@ class Message extends AbstractEntity
 
     /**
      * @param PhotoSize[]|null $newChatPhoto
+     *
      * @return Message
      */
     public function setNewChatPhoto(?array $newChatPhoto): self
     {
         $this->newChatPhoto = $newChatPhoto;
+
         return $this;
     }
 
@@ -872,11 +941,13 @@ class Message extends AbstractEntity
 
     /**
      * @param bool $deleteChatPhoto
+     *
      * @return Message
      */
     public function setDeleteChatPhoto(bool $deleteChatPhoto): self
     {
         $this->deleteChatPhoto = $deleteChatPhoto;
+
         return $this;
     }
 
@@ -890,11 +961,13 @@ class Message extends AbstractEntity
 
     /**
      * @param bool $groupChatCreated
+     *
      * @return Message
      */
     public function setGroupChatCreated(bool $groupChatCreated): self
     {
         $this->groupChatCreated = $groupChatCreated;
+
         return $this;
     }
 
@@ -908,11 +981,13 @@ class Message extends AbstractEntity
 
     /**
      * @param bool $supergroupChatCreated
+     *
      * @return Message
      */
     public function setSupergroupChatCreated(bool $supergroupChatCreated): self
     {
         $this->supergroupChatCreated = $supergroupChatCreated;
+
         return $this;
     }
 
@@ -926,11 +1001,13 @@ class Message extends AbstractEntity
 
     /**
      * @param bool $channelChatCreated
+     *
      * @return Message
      */
     public function setChannelChatCreated(bool $channelChatCreated): self
     {
         $this->channelChatCreated = $channelChatCreated;
+
         return $this;
     }
 
@@ -944,11 +1021,13 @@ class Message extends AbstractEntity
 
     /**
      * @param int|null $migrateToChatId
+     *
      * @return Message
      */
     public function setMigrateToChatId(?int $migrateToChatId): self
     {
         $this->migrateToChatId = $migrateToChatId;
+
         return $this;
     }
 
@@ -962,11 +1041,13 @@ class Message extends AbstractEntity
 
     /**
      * @param int|null $migrateFromChatId
+     *
      * @return Message
      */
     public function setMigrateFromChatId(?int $migrateFromChatId): self
     {
         $this->migrateFromChatId = $migrateFromChatId;
+
         return $this;
     }
 
@@ -980,11 +1061,13 @@ class Message extends AbstractEntity
 
     /**
      * @param Message|null $pinnedMessage
+     *
      * @return Message
      */
     public function setPinnedMessage(?Message $pinnedMessage): self
     {
         $this->pinnedMessage = $pinnedMessage;
+
         return $this;
     }
 
@@ -998,11 +1081,13 @@ class Message extends AbstractEntity
 
     /**
      * @param \StdClass|null $invoice
+     *
      * @return Message
      */
     public function setInvoice(?\StdClass $invoice): self
     {
         $this->invoice = $invoice;
+
         return $this;
     }
 
@@ -1016,11 +1101,13 @@ class Message extends AbstractEntity
 
     /**
      * @param \StdClass|null $successfulPayment
+     *
      * @return Message
      */
     public function setSuccessfulPayment(?\StdClass $successfulPayment): self
     {
         $this->successfulPayment = $successfulPayment;
+
         return $this;
     }
 
@@ -1034,11 +1121,13 @@ class Message extends AbstractEntity
 
     /**
      * @param string|null $connectedWebsite
+     *
      * @return Message
      */
     public function setConnectedWebsite(?string $connectedWebsite): self
     {
         $this->connectedWebsite = $connectedWebsite;
+
         return $this;
     }
 
@@ -1052,11 +1141,13 @@ class Message extends AbstractEntity
 
     /**
      * @param \StdClass|null $passportData
+     *
      * @return Message
      */
     public function setPassportData(?\StdClass $passportData): self
     {
         $this->passportData = $passportData;
+
         return $this;
     }
 
@@ -1070,11 +1161,13 @@ class Message extends AbstractEntity
 
     /**
      * @param InlineKeyboardMarkup|null $replyMarkup
+     *
      * @return Message
      */
     public function setReplyMarkup(?InlineKeyboardMarkup $replyMarkup): self
     {
         $this->replyMarkup = $replyMarkup;
+
         return $this;
     }
 }

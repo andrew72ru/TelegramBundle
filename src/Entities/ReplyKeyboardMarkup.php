@@ -19,7 +19,7 @@ class ReplyKeyboardMarkup
 
     /**
      * @var array
-     * Array of button rows, each represented by an Array of @see KeyboardButton objects
+     *            Array of button rows, each represented by an Array of @see KeyboardButton objects
      */
     private $keyboard = [];
 
@@ -48,11 +48,13 @@ class ReplyKeyboardMarkup
 
     /**
      * @param array $keyboard
+     *
      * @return ReplyKeyboardMarkup
      */
     public function setKeyboard($keyboard): self
     {
         $this->keyboard = $keyboard;
+
         return $this;
     }
 
@@ -66,11 +68,13 @@ class ReplyKeyboardMarkup
 
     /**
      * @param bool $resizeKeyboard
+     *
      * @return ReplyKeyboardMarkup
      */
     public function setResizeKeyboard(bool $resizeKeyboard): self
     {
         $this->resizeKeyboard = $resizeKeyboard;
+
         return $this;
     }
 
@@ -84,11 +88,13 @@ class ReplyKeyboardMarkup
 
     /**
      * @param bool $oneTimeKeyboard
+     *
      * @return ReplyKeyboardMarkup
      */
     public function setOneTimeKeyboard(bool $oneTimeKeyboard): self
     {
         $this->oneTimeKeyboard = $oneTimeKeyboard;
+
         return $this;
     }
 
@@ -102,11 +108,13 @@ class ReplyKeyboardMarkup
 
     /**
      * @param bool $selective
+     *
      * @return ReplyKeyboardMarkup
      */
     public function setSelective(bool $selective): self
     {
         $this->selective = $selective;
+
         return $this;
     }
 }

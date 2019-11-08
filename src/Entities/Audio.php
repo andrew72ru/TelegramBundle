@@ -9,6 +9,7 @@ namespace TelegramBundle\Entities;
 
 /**
  * Class Audio.
+ *
  * @see https://core.telegram.org/bots/api#audio
  */
 class Audio extends Document
@@ -38,11 +39,13 @@ class Audio extends Document
 
     /**
      * @param int $duration
+     *
      * @return Audio
      */
     public function setDuration(int $duration): self
     {
         $this->duration = $duration;
+
         return $this;
     }
 
@@ -56,11 +59,13 @@ class Audio extends Document
 
     /**
      * @param string|null $performer
+     *
      * @return Audio
      */
     public function setPerformer(?string $performer): self
     {
         $this->performer = $performer;
+
         return $this;
     }
 
@@ -74,11 +79,13 @@ class Audio extends Document
 
     /**
      * @param string|null $title
+     *
      * @return Audio
      */
     public function setTitle(?string $title): self
     {
         $this->title = $title;
+
         return $this;
     }
 }

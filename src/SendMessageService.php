@@ -55,9 +55,10 @@ class SendMessageService implements Interfaces\SendMessageInterface
 
     /**
      * SendMessage constructor.
-     * @param ContainerInterface $container
+     *
+     * @param ContainerInterface       $container
      * @param EventDispatcherInterface $dispatcher
-     * @param SerializerInterface $serializer
+     * @param SerializerInterface      $serializer
      */
     public function __construct(ContainerInterface $container, EventDispatcherInterface $dispatcher, SerializerInterface $serializer)
     {
@@ -92,9 +93,11 @@ class SendMessageService implements Interfaces\SendMessageInterface
 
     /**
      * @param MethodInterface $method
-     * @param Update $update
-     * @param array $options
+     * @param Update          $update
+     * @param array           $options
+     *
      * @return ResponseInterface
+     *
      * @throws ClientExceptionInterface
      * @throws RedirectionExceptionInterface
      * @throws ServerExceptionInterface
@@ -104,7 +107,7 @@ class SendMessageService implements Interfaces\SendMessageInterface
     {
         $response = $method->send($this->client, $this->apiUrl, $options);
         if ($response->getStatusCode() !== Response::HTTP_OK) {
-            throw new HttpException((int)$response->getStatusCode(), $response->getContent(false));
+            throw new HttpException((int) $response->getStatusCode(), $response->getContent(false));
         }
 
         return $response;
@@ -121,8 +124,7 @@ class SendMessageService implements Interfaces\SendMessageInterface
     {
         try {
             $requestContent = \json_decode($request->getContent(), false, 512, JSON_THROW_ON_ERROR);
-        }
-        catch (\JsonException $e) {
+        } catch (\JsonException $e) {
             throw new TelegramException(\sprintf('Unable to decode request content: %s', $e->getMessage()));
         }
 

@@ -1,15 +1,15 @@
 <?php
 /**
- * 08.11.2019
+ * 08.11.2019.
  */
 
 declare(strict_types=1);
 
-
 namespace TelegramBundle\Entities;
 
 /**
- * Class PollOption
+ * Class PollOption.
+ *
  * @see https://core.telegram.org/bots/api#polloption
  */
 class PollOption
@@ -34,11 +34,13 @@ class PollOption
 
     /**
      * @param string $text
+     *
      * @return PollOption
      */
     public function setText(string $text): self
     {
         $this->text = $text;
+
         return $this;
     }
 
@@ -52,11 +54,13 @@ class PollOption
 
     /**
      * @param int $voterCount
+     *
      * @return PollOption
      */
     public function setVoterCount(int $voterCount): self
     {
         $this->voterCount = $voterCount;
+
         return $this;
     }
 }

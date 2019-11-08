@@ -40,11 +40,13 @@ class KeyboardButton
 
     /**
      * @param string $text
+     *
      * @return KeyboardButton
      */
     public function setText(string $text): self
     {
         $this->text = $text;
+
         return $this;
     }
 
@@ -58,11 +60,13 @@ class KeyboardButton
 
     /**
      * @param bool $requestContact
+     *
      * @return KeyboardButton
      */
     public function setRequestContact(bool $requestContact): self
     {
         $this->requestContact = $requestContact;
+
         return $this;
     }
 
@@ -76,12 +80,13 @@ class KeyboardButton
 
     /**
      * @param bool $requestLocation
+     *
      * @return KeyboardButton
      */
     public function setRequestLocation(bool $requestLocation): self
     {
         $this->requestLocation = $requestLocation;
+
         return $this;
     }
-
 }

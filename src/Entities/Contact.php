@@ -8,7 +8,8 @@
 namespace TelegramBundle\Entities;
 
 /**
- * Class Contact
+ * Class Contact.
+ *
  * @see https://core.telegram.org/bots/api#contact
  */
 class Contact
@@ -48,11 +49,13 @@ class Contact
 
     /**
      * @param string $phoneNumber
+     *
      * @return Contact
      */
     public function setPhoneNumber(string $phoneNumber): self
     {
         $this->phoneNumber = $phoneNumber;
+
         return $this;
     }
 
@@ -66,11 +69,13 @@ class Contact
 
     /**
      * @param string $firstName
+     *
      * @return Contact
      */
     public function setFirstName(string $firstName): self
     {
         $this->firstName = $firstName;
+
         return $this;
     }
 
@@ -84,11 +89,13 @@ class Contact
 
     /**
      * @param string|null $lastName
+     *
      * @return Contact
      */
     public function setLastName(?string $lastName): self
     {
         $this->lastName = $lastName;
+
         return $this;
     }
 
@@ -102,11 +109,13 @@ class Contact
 
     /**
      * @param int|null $userId
+     *
      * @return Contact
      */
     public function setUserId(?int $userId): self
     {
         $this->userId = $userId;
+
         return $this;
     }
 
@@ -120,11 +129,13 @@ class Contact
 
     /**
      * @param string|null $vcard
+     *
      * @return Contact
      */
     public function setVcard(?string $vcard): self
     {
         $this->vcard = $vcard;
+
         return $this;
     }
 }

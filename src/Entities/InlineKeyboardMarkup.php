@@ -13,7 +13,7 @@ namespace TelegramBundle\Entities;
  *
  * @see https://core.telegram.org/bots/api#inlinekeyboardmarkup
  */
-class InlineKeyboardMarkup extends AbstractEntity
+class InlineKeyboardMarkup
 {
     public const PROPERTY_NAME = 'reply_markup';
 
@@ -21,7 +21,7 @@ class InlineKeyboardMarkup extends AbstractEntity
 
     /**
      * @var array
-     * Array of button rows, each represented by an Array of @see InlineKeyboardButton objects
+     *            Array of button rows, each represented by an Array of @see InlineKeyboardButton objects
      */
     private $inlineKeyboard = [];
 

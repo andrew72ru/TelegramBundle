@@ -1,15 +1,15 @@
 <?php
 /**
- * 07.11.2019
+ * 07.11.2019.
  */
 
 declare(strict_types=1);
 
-
 namespace TelegramBundle\Entities;
 
 /**
- * Class Venue
+ * Class Venue.
+ *
  * @see https://core.telegram.org/bots/api#venue
  */
 class Venue
@@ -49,11 +49,13 @@ class Venue
 
     /**
      * @param Location $location
+     *
      * @return Venue
      */
     public function setLocation(Location $location): Venue
     {
         $this->location = $location;
+
         return $this;
     }
 
@@ -67,11 +69,13 @@ class Venue
 
     /**
      * @param string $title
+     *
      * @return Venue
      */
     public function setTitle(string $title): Venue
     {
         $this->title = $title;
+
         return $this;
     }
 
@@ -85,11 +89,13 @@ class Venue
 
     /**
      * @param string $address
+     *
      * @return Venue
      */
     public function setAddress(string $address): Venue
     {
         $this->address = $address;
+
         return $this;
     }
 
@@ -103,11 +109,13 @@ class Venue
 
     /**
      * @param string|null $foursquareId
+     *
      * @return Venue
      */
     public function setFoursquareId(?string $foursquareId): Venue
     {
         $this->foursquareId = $foursquareId;
+
         return $this;
     }
 
@@ -121,11 +129,13 @@ class Venue
 
     /**
      * @param string|null $foursquareType
+     *
      * @return Venue
      */
     public function setFoursquareType(?string $foursquareType): Venue
     {
         $this->foursquareType = $foursquareType;
+
         return $this;
     }
 }

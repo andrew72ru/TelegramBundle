@@ -8,7 +8,8 @@
 namespace TelegramBundle\Entities;
 
 /**
- * Class Location
+ * Class Location.
+ *
  * @see https://core.telegram.org/bots/api#location
  */
 class Location
@@ -33,11 +34,13 @@ class Location
 
     /**
      * @param float $longitude
+     *
      * @return Location
      */
     public function setLongitude(float $longitude): self
     {
         $this->longitude = $longitude;
+
         return $this;
     }
 
@@ -51,11 +54,13 @@ class Location
 
     /**
      * @param float $latitude
+     *
      * @return Location
      */
     public function setLatitude(float $latitude): self
     {
         $this->latitude = $latitude;
+
         return $this;
     }
 }

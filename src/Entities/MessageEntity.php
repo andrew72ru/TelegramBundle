@@ -9,9 +9,10 @@ namespace TelegramBundle\Entities;
 
 /**
  * Class MessageEntity.
+ *
  * @see https://core.telegram.org/bots/api#messageentity
  */
-class MessageEntity extends AbstractEntity
+class MessageEntity
 {
     public const E_HASHTAG = 'hashtag';
     public const E_BOT_COMMAND = 'bot_command';
@@ -61,11 +62,13 @@ class MessageEntity extends AbstractEntity
 
     /**
      * @param string $type
+     *
      * @return MessageEntity
      */
-    public function setType(string $type): MessageEntity
+    public function setType(string $type): self
     {
         $this->type = $type;
+
         return $this;
     }
 
@@ -79,11 +82,13 @@ class MessageEntity extends AbstractEntity
 
     /**
      * @param int $offset
+     *
      * @return MessageEntity
      */
-    public function setOffset(int $offset): MessageEntity
+    public function setOffset(int $offset): self
     {
         $this->offset = $offset;
+
         return $this;
     }
 
@@ -97,11 +102,13 @@ class MessageEntity extends AbstractEntity
 
     /**
      * @param int $length
+     *
      * @return MessageEntity
      */
-    public function setLength(int $length): MessageEntity
+    public function setLength(int $length): self
     {
         $this->length = $length;
+
         return $this;
     }
 
@@ -115,11 +122,13 @@ class MessageEntity extends AbstractEntity
 
     /**
      * @param string|null $url
+     *
      * @return MessageEntity
      */
-    public function setUrl(?string $url): MessageEntity
+    public function setUrl(?string $url): self
     {
         $this->url = $url;
+
         return $this;
     }
 
@@ -133,11 +142,13 @@ class MessageEntity extends AbstractEntity
 
     /**
      * @param User|null $user
+     *
      * @return MessageEntity
      */
-    public function setUser(?User $user): MessageEntity
+    public function setUser(?User $user): self
     {
         $this->user = $user;
+
         return $this;
     }
 }

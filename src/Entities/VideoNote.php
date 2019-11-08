@@ -44,11 +44,13 @@ class VideoNote
 
     /**
      * @param string $fileId
+     *
      * @return VideoNote
      */
     public function setFileId(string $fileId): self
     {
         $this->fileId = $fileId;
+
         return $this;
     }
 
@@ -62,11 +64,13 @@ class VideoNote
 
     /**
      * @param int $length
+     *
      * @return VideoNote
      */
     public function setLength(int $length): self
     {
         $this->length = $length;
+
         return $this;
     }
 
@@ -80,11 +84,13 @@ class VideoNote
 
     /**
      * @param int $duration
+     *
      * @return VideoNote
      */
     public function setDuration(int $duration): self
     {
         $this->duration = $duration;
+
         return $this;
     }
 
@@ -98,11 +104,13 @@ class VideoNote
 
     /**
      * @param PhotoSize|null $thumb
+     *
      * @return VideoNote
      */
     public function setThumb(?PhotoSize $thumb): self
     {
         $this->thumb = $thumb;
+
         return $this;
     }
 
@@ -116,11 +124,13 @@ class VideoNote
 
     /**
      * @param int|null $fileSize
+     *
      * @return VideoNote
      */
     public function setFileSize(?int $fileSize): self
     {
         $this->fileSize = $fileSize;
+
         return $this;
     }
 }

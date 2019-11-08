@@ -9,9 +9,10 @@ namespace TelegramBundle\Entities;
 
 /**
  * Class PhotoSize.
+ *
  * @see https://core.telegram.org/bots/api#photosize
  */
-class PhotoSize extends AbstractEntity
+class PhotoSize
 {
     /**
      * @var string
@@ -43,11 +44,13 @@ class PhotoSize extends AbstractEntity
 
     /**
      * @param string $fileId
+     *
      * @return PhotoSize
      */
     public function setFileId(string $fileId): self
     {
         $this->fileId = $fileId;
+
         return $this;
     }
 
@@ -61,11 +64,13 @@ class PhotoSize extends AbstractEntity
 
     /**
      * @param int $width
+     *
      * @return PhotoSize
      */
     public function setWidth(int $width): self
     {
         $this->width = $width;
+
         return $this;
     }
 
@@ -79,11 +84,13 @@ class PhotoSize extends AbstractEntity
 
     /**
      * @param int $height
+     *
      * @return PhotoSize
      */
     public function setHeight(int $height): self
     {
         $this->height = $height;
+
         return $this;
     }
 
@@ -97,11 +104,13 @@ class PhotoSize extends AbstractEntity
 
     /**
      * @param int|null $fileSize
+     *
      * @return PhotoSize
      */
     public function setFileSize(?int $fileSize): self
     {
         $this->fileSize = $fileSize;
+
         return $this;
     }
 }

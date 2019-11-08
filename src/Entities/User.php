@@ -12,7 +12,7 @@ namespace TelegramBundle\Entities;
  *
  * @see https://core.telegram.org/bots/api#user
  */
-class User extends AbstractEntity
+class User
 {
     /**
      * @var int Unique identifier for this user or bot
@@ -56,11 +56,13 @@ class User extends AbstractEntity
 
     /**
      * @param int $id
+     *
      * @return User
      */
     public function setId(int $id): self
     {
         $this->id = $id;
+
         return $this;
     }
 
@@ -74,11 +76,13 @@ class User extends AbstractEntity
 
     /**
      * @param bool $isBot
+     *
      * @return User
      */
     public function setIsBot(bool $isBot): self
     {
         $this->isBot = $isBot;
+
         return $this;
     }
 
@@ -92,11 +96,13 @@ class User extends AbstractEntity
 
     /**
      * @param string $firstName
+     *
      * @return User
      */
     public function setFirstName(string $firstName): self
     {
         $this->firstName = $firstName;
+
         return $this;
     }
 
@@ -110,11 +116,13 @@ class User extends AbstractEntity
 
     /**
      * @param string|null $lastName
+     *
      * @return User
      */
     public function setLastName(?string $lastName): self
     {
         $this->lastName = $lastName;
+
         return $this;
     }
 
@@ -128,11 +136,13 @@ class User extends AbstractEntity
 
     /**
      * @param string|null $username
+     *
      * @return User
      */
     public function setUsername(?string $username): self
     {
         $this->username = $username;
+
         return $this;
     }
 
@@ -146,12 +156,13 @@ class User extends AbstractEntity
 
     /**
      * @param string|null $languageCode
+     *
      * @return User
      */
     public function setLanguageCode(?string $languageCode): self
     {
         $this->languageCode = $languageCode;
+
         return $this;
     }
-
 }

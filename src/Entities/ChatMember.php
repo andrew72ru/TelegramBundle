@@ -1,15 +1,15 @@
 <?php
 /**
- * 08.11.2019
+ * 08.11.2019.
  */
 
 declare(strict_types=1);
 
-
 namespace TelegramBundle\Entities;
 
 /**
- * Class ChatMember
+ * Class ChatMember.
+ *
  * @see https://core.telegram.org/bots/api#chatmember
  */
 class ChatMember
@@ -114,11 +114,13 @@ class ChatMember
 
     /**
      * @param User $user
+     *
      * @return ChatMember
      */
     public function setUser(User $user): self
     {
         $this->user = $user;
+
         return $this;
     }
 
@@ -132,11 +134,13 @@ class ChatMember
 
     /**
      * @param string $status
+     *
      * @return ChatMember
      */
     public function setStatus(string $status): self
     {
         $this->status = $status;
+
         return $this;
     }
 
@@ -150,11 +154,13 @@ class ChatMember
 
     /**
      * @param int|null $untilDate
+     *
      * @return ChatMember
      */
     public function setUntilDate(?int $untilDate): self
     {
         $this->untilDate = $untilDate;
+
         return $this;
     }
 
@@ -168,11 +174,13 @@ class ChatMember
 
     /**
      * @param bool $canBeEdited
+     *
      * @return ChatMember
      */
     public function setCanBeEdited(bool $canBeEdited): self
     {
         $this->canBeEdited = $canBeEdited;
+
         return $this;
     }
 
@@ -186,11 +194,13 @@ class ChatMember
 
     /**
      * @param bool $canPostMessages
+     *
      * @return ChatMember
      */
     public function setCanPostMessages(bool $canPostMessages): self
     {
         $this->canPostMessages = $canPostMessages;
+
         return $this;
     }
 
@@ -204,11 +214,13 @@ class ChatMember
 
     /**
      * @param bool $canEditMessages
+     *
      * @return ChatMember
      */
     public function setCanEditMessages(bool $canEditMessages): self
     {
         $this->canEditMessages = $canEditMessages;
+
         return $this;
     }
 
@@ -222,11 +234,13 @@ class ChatMember
 
     /**
      * @param bool $canDeleteMessages
+     *
      * @return ChatMember
      */
     public function setCanDeleteMessages(bool $canDeleteMessages): self
     {
         $this->canDeleteMessages = $canDeleteMessages;
+
         return $this;
     }
 
@@ -240,11 +254,13 @@ class ChatMember
 
     /**
      * @param bool $canRestrictMembers
+     *
      * @return ChatMember
      */
     public function setCanRestrictMembers(bool $canRestrictMembers): self
     {
         $this->canRestrictMembers = $canRestrictMembers;
+
         return $this;
     }
 
@@ -258,11 +274,13 @@ class ChatMember
 
     /**
      * @param bool $canPromoteMembers
+     *
      * @return ChatMember
      */
     public function setCanPromoteMembers(bool $canPromoteMembers): self
     {
         $this->canPromoteMembers = $canPromoteMembers;
+
         return $this;
     }
 
@@ -276,11 +294,13 @@ class ChatMember
 
     /**
      * @param bool $canChangeInfo
+     *
      * @return ChatMember
      */
     public function setCanChangeInfo(bool $canChangeInfo): self
     {
         $this->canChangeInfo = $canChangeInfo;
+
         return $this;
     }
 
@@ -294,11 +314,13 @@ class ChatMember
 
     /**
      * @param bool $canInviteUsers
+     *
      * @return ChatMember
      */
     public function setCanInviteUsers(bool $canInviteUsers): self
     {
         $this->canInviteUsers = $canInviteUsers;
+
         return $this;
     }
 
@@ -312,11 +334,13 @@ class ChatMember
 
     /**
      * @param bool $canPinMessages
+     *
      * @return ChatMember
      */
     public function setCanPinMessages(bool $canPinMessages): self
     {
         $this->canPinMessages = $canPinMessages;
+
         return $this;
     }
 
@@ -330,11 +354,13 @@ class ChatMember
 
     /**
      * @param bool $isMember
+     *
      * @return ChatMember
      */
     public function setIsMember(bool $isMember): self
     {
         $this->isMember = $isMember;
+
         return $this;
     }
 
@@ -348,11 +374,13 @@ class ChatMember
 
     /**
      * @param bool $canSendMessages
+     *
      * @return ChatMember
      */
     public function setCanSendMessages(bool $canSendMessages): self
     {
         $this->canSendMessages = $canSendMessages;
+
         return $this;
     }
 
@@ -366,11 +394,13 @@ class ChatMember
 
     /**
      * @param bool $canSendMediaMessages
+     *
      * @return ChatMember
      */
     public function setCanSendMediaMessages(bool $canSendMediaMessages): self
     {
         $this->canSendMediaMessages = $canSendMediaMessages;
+
         return $this;
     }
 
@@ -384,11 +414,13 @@ class ChatMember
 
     /**
      * @param bool $canSendPolls
+     *
      * @return ChatMember
      */
     public function setCanSendPolls(bool $canSendPolls): self
     {
         $this->canSendPolls = $canSendPolls;
+
         return $this;
     }
 
@@ -402,11 +434,13 @@ class ChatMember
 
     /**
      * @param bool $canSendOtherMessages
+     *
      * @return ChatMember
      */
     public function setCanSendOtherMessages(bool $canSendOtherMessages): self
     {
         $this->canSendOtherMessages = $canSendOtherMessages;
+
         return $this;
     }
 
@@ -420,11 +454,13 @@ class ChatMember
 
     /**
      * @param bool $canAddWebPagePreviews
+     *
      * @return ChatMember
      */
     public function setCanAddWebPagePreviews(bool $canAddWebPagePreviews): self
     {
         $this->canAddWebPagePreviews = $canAddWebPagePreviews;
+
         return $this;
     }
 }

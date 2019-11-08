@@ -1,15 +1,15 @@
 <?php
 /**
- * 08.11.2019
+ * 08.11.2019.
  */
 
 declare(strict_types=1);
 
-
 namespace TelegramBundle\Entities;
 
 /**
- * Class ChatPermissions
+ * Class ChatPermissions.
+ *
  * @see https://core.telegram.org/bots/api#chatpermissions
  */
 class ChatPermissions
@@ -64,11 +64,13 @@ class ChatPermissions
 
     /**
      * @param bool $canSendMessages
+     *
      * @return ChatPermissions
      */
     public function setCanSendMessages(bool $canSendMessages): self
     {
         $this->canSendMessages = $canSendMessages;
+
         return $this;
     }
 
@@ -82,11 +84,13 @@ class ChatPermissions
 
     /**
      * @param bool $canSendMediaMessages
+     *
      * @return ChatPermissions
      */
     public function setCanSendMediaMessages(bool $canSendMediaMessages): self
     {
         $this->canSendMediaMessages = $canSendMediaMessages;
+
         return $this;
     }
 
@@ -100,11 +104,13 @@ class ChatPermissions
 
     /**
      * @param bool $canSendPolls
+     *
      * @return ChatPermissions
      */
     public function setCanSendPolls(bool $canSendPolls): self
     {
         $this->canSendPolls = $canSendPolls;
+
         return $this;
     }
 
@@ -118,11 +124,13 @@ class ChatPermissions
 
     /**
      * @param bool $canSendOtherMessages
+     *
      * @return ChatPermissions
      */
     public function setCanSendOtherMessages(bool $canSendOtherMessages): self
     {
         $this->canSendOtherMessages = $canSendOtherMessages;
+
         return $this;
     }
 
@@ -136,11 +144,13 @@ class ChatPermissions
 
     /**
      * @param bool $canAddWebPagePreviews
+     *
      * @return ChatPermissions
      */
     public function setCanAddWebPagePreviews(bool $canAddWebPagePreviews): self
     {
         $this->canAddWebPagePreviews = $canAddWebPagePreviews;
+
         return $this;
     }
 
@@ -154,11 +164,13 @@ class ChatPermissions
 
     /**
      * @param bool $canChangeInfo
+     *
      * @return ChatPermissions
      */
     public function setCanChangeInfo(bool $canChangeInfo): self
     {
         $this->canChangeInfo = $canChangeInfo;
+
         return $this;
     }
 
@@ -172,11 +184,13 @@ class ChatPermissions
 
     /**
      * @param bool $canInviteUsers
+     *
      * @return ChatPermissions
      */
     public function setCanInviteUsers(bool $canInviteUsers): self
     {
         $this->canInviteUsers = $canInviteUsers;
+
         return $this;
     }
 
@@ -190,11 +204,13 @@ class ChatPermissions
 
     /**
      * @param bool $canPinMessages
+     *
      * @return ChatPermissions
      */
     public function setCanPinMessages(bool $canPinMessages): self
     {
         $this->canPinMessages = $canPinMessages;
+
         return $this;
     }
 }

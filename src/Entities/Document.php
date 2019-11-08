@@ -50,11 +50,13 @@ class Document
 
     /**
      * @param int $fileId
+     *
      * @return Document
      */
     public function setFileId(int $fileId): self
     {
         $this->fileId = $fileId;
+
         return $this;
     }
 
@@ -68,11 +70,13 @@ class Document
 
     /**
      * @param PhotoSize|null $thumb
+     *
      * @return Document
      */
     public function setThumb(?PhotoSize $thumb): self
     {
         $this->thumb = $thumb;
+
         return $this;
     }
 
@@ -86,11 +90,13 @@ class Document
 
     /**
      * @param string|null $fileName
+     *
      * @return Document
      */
     public function setFileName(?string $fileName): self
     {
         $this->fileName = $fileName;
+
         return $this;
     }
 
@@ -104,11 +110,13 @@ class Document
 
     /**
      * @param string|null $mimeType
+     *
      * @return Document
      */
     public function setMimeType(?string $mimeType): self
     {
         $this->mimeType = $mimeType;
+
         return $this;
     }
 
@@ -122,11 +130,13 @@ class Document
 
     /**
      * @param int|null $fileSize
+     *
      * @return Document
      */
     public function setFileSize(?int $fileSize): self
     {
         $this->fileSize = $fileSize;
+
         return $this;
     }
 }

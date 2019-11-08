@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace TelegramBundle\Controller;
@@ -34,8 +35,9 @@ class ClientController
 
     /**
      * ClientController constructor.
+     *
      * @param SendMessageInterface $sendMessage
-     * @param LoggerInterface $logger
+     * @param LoggerInterface      $logger
      */
     public function __construct(SendMessageInterface $sendMessage, LoggerInterface $logger)
     {

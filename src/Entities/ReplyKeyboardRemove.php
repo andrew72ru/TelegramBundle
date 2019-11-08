@@ -1,15 +1,15 @@
 <?php
 /**
- * 08.11.2019
+ * 08.11.2019.
  */
 
 declare(strict_types=1);
 
-
 namespace TelegramBundle\Entities;
 
 /**
- * Class ReplyKeyboardRemove
+ * Class ReplyKeyboardRemove.
+ *
  * @see https://core.telegram.org/bots/api#replykeyboardremove
  */
 class ReplyKeyboardRemove
@@ -34,11 +34,13 @@ class ReplyKeyboardRemove
 
     /**
      * @param bool $removeKeyboard
+     *
      * @return ReplyKeyboardRemove
      */
     public function setRemoveKeyboard(bool $removeKeyboard): self
     {
         $this->removeKeyboard = $removeKeyboard;
+
         return $this;
     }
 
@@ -52,11 +54,13 @@ class ReplyKeyboardRemove
 
     /**
      * @param bool $selective
+     *
      * @return ReplyKeyboardRemove
      */
     public function setSelective(bool $selective): self
     {
         $this->selective = $selective;
+
         return $this;
     }
 }

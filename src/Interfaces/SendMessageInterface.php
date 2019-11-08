@@ -27,8 +27,9 @@ interface SendMessageInterface
 
     /**
      * @param MethodInterface $method
-     * @param Update $update
-     * @param array $options
+     * @param Update          $update
+     * @param array           $options
+     *
      * @return ResponseInterface
      */
     public function getResponse(MethodInterface $method, Update $update, array $options = []): ResponseInterface;

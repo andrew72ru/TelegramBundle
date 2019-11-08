@@ -80,11 +80,13 @@ class Update
 
     /**
      * @param int|null $chatId
+     *
      * @return Update
      */
     public function setChatId(?int $chatId): self
     {
         $this->chatId = $chatId;
+
         return $this;
     }
 
@@ -98,11 +100,13 @@ class Update
 
     /**
      * @param int $updateId
+     *
      * @return Update
      */
     public function setUpdateId(int $updateId): self
     {
         $this->updateId = $updateId;
+
         return $this;
     }
 
@@ -116,11 +120,13 @@ class Update
 
     /**
      * @param Message|null $message
+     *
      * @return Update
      */
     public function setMessage(?Message $message): self
     {
         $this->message = $message;
+
         return $this;
     }
 
@@ -134,11 +140,13 @@ class Update
 
     /**
      * @param Message|null $editedMessage
+     *
      * @return Update
      */
     public function setEditedMessage(?Message $editedMessage): self
     {
         $this->editedMessage = $editedMessage;
+
         return $this;
     }
 
@@ -152,11 +160,13 @@ class Update
 
     /**
      * @param Message|null $channelPost
+     *
      * @return Update
      */
     public function setChannelPost(?Message $channelPost): self
     {
         $this->channelPost = $channelPost;
+
         return $this;
     }
 
@@ -170,11 +180,13 @@ class Update
 
     /**
      * @param Message|null $editedChannelPost
+     *
      * @return Update
      */
     public function setEditedChannelPost(?Message $editedChannelPost): self
     {
         $this->editedChannelPost = $editedChannelPost;
+
         return $this;
     }
 
@@ -188,11 +200,13 @@ class Update
 
     /**
      * @param InlineQuery|null $inlineQuery
+     *
      * @return Update
      */
     public function setInlineQuery(?InlineQuery $inlineQuery): self
     {
         $this->inlineQuery = $inlineQuery;
+
         return $this;
     }
 
@@ -206,11 +220,13 @@ class Update
 
     /**
      * @param ChosenInlineResult|null $chosenInlineResult
+     *
      * @return Update
      */
     public function setChosenInlineResult(?ChosenInlineResult $chosenInlineResult): self
     {
         $this->chosenInlineResult = $chosenInlineResult;
+
         return $this;
     }
 
@@ -224,11 +240,13 @@ class Update
 
     /**
      * @param CallbackQuery|null $callbackQuery
+     *
      * @return Update
      */
     public function setCallbackQuery(?CallbackQuery $callbackQuery): self
     {
         $this->callbackQuery = $callbackQuery;
+
         return $this;
     }
 
@@ -242,11 +260,13 @@ class Update
 
     /**
      * @param ResponseInterface|null $response
+     *
      * @return Update
      */
     public function setResponse(?ResponseInterface $response): self
     {
         $this->response = $response;
+
         return $this;
     }
 }

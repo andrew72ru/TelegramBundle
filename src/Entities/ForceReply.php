@@ -1,15 +1,15 @@
 <?php
 /**
- * 08.11.2019
+ * 08.11.2019.
  */
 
 declare(strict_types=1);
 
-
 namespace TelegramBundle\Entities;
 
 /**
- * Class ForceReply
+ * Class ForceReply.
+ *
  * @see https://core.telegram.org/bots/api#forcereply
  */
 class ForceReply
@@ -34,11 +34,13 @@ class ForceReply
 
     /**
      * @param bool $forceReply
+     *
      * @return ForceReply
      */
     public function setForceReply(bool $forceReply): self
     {
         $this->forceReply = $forceReply;
+
         return $this;
     }
 
@@ -52,11 +54,13 @@ class ForceReply
 
     /**
      * @param bool $selective
+     *
      * @return ForceReply
      */
     public function setSelective(bool $selective): self
     {
         $this->selective = $selective;
+
         return $this;
     }
 }

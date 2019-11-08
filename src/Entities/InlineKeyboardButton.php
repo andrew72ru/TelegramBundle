@@ -13,7 +13,7 @@ namespace TelegramBundle\Entities;
  *
  * @see https://core.telegram.org/bots/api#inlinekeyboardbutton
  */
-class InlineKeyboardButton extends AbstractEntity
+class InlineKeyboardButton
 {
     /**
      * @var string
@@ -47,8 +47,8 @@ class InlineKeyboardButton extends AbstractEntity
 
     /**
      * @var bool
-     * Optional. Specify True, to send a Pay button.
-     * NOTE: This type of button must always be the first button in the first row.
+     *           Optional. Specify True, to send a Pay button.
+     *           NOTE: This type of button must always be the first button in the first row.
      */
     private $pay = false;
 
@@ -62,11 +62,13 @@ class InlineKeyboardButton extends AbstractEntity
 
     /**
      * @param string $text
+     *
      * @return InlineKeyboardButton
      */
     public function setText(string $text): self
     {
         $this->text = $text;
+
         return $this;
     }
 
@@ -80,11 +82,13 @@ class InlineKeyboardButton extends AbstractEntity
 
     /**
      * @param string|null $url
+     *
      * @return InlineKeyboardButton
      */
     public function setUrl(?string $url): self
     {
         $this->url = $url;
+
         return $this;
     }
 
@@ -98,11 +102,13 @@ class InlineKeyboardButton extends AbstractEntity
 
     /**
      * @param string|null $callbackData
+     *
      * @return InlineKeyboardButton
      */
     public function setCallbackData(?string $callbackData): self
     {
         $this->callbackData = $callbackData;
+
         return $this;
     }
 
@@ -116,11 +122,13 @@ class InlineKeyboardButton extends AbstractEntity
 
     /**
      * @param string|null $switchInlineQuery
+     *
      * @return InlineKeyboardButton
      */
     public function setSwitchInlineQuery(?string $switchInlineQuery): self
     {
         $this->switchInlineQuery = $switchInlineQuery;
+
         return $this;
     }
 
@@ -134,11 +142,13 @@ class InlineKeyboardButton extends AbstractEntity
 
     /**
      * @param string|null $switchInlineQueryCurrentChat
+     *
      * @return InlineKeyboardButton
      */
     public function setSwitchInlineQueryCurrentChat(?string $switchInlineQueryCurrentChat): self
     {
         $this->switchInlineQueryCurrentChat = $switchInlineQueryCurrentChat;
+
         return $this;
     }
 
@@ -152,11 +162,13 @@ class InlineKeyboardButton extends AbstractEntity
 
     /**
      * @param \StdClass|null $callbackGame
+     *
      * @return InlineKeyboardButton
      */
     public function setCallbackGame(?\StdClass $callbackGame): self
     {
         $this->callbackGame = $callbackGame;
+
         return $this;
     }
 
@@ -170,11 +182,13 @@ class InlineKeyboardButton extends AbstractEntity
 
     /**
      * @param bool $pay
+     *
      * @return InlineKeyboardButton
      */
     public function setPay(bool $pay): self
     {
         $this->pay = $pay;
+
         return $this;
     }
 }

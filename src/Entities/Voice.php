@@ -8,7 +8,8 @@
 namespace TelegramBundle\Entities;
 
 /**
- * Class Voice
+ * Class Voice.
+ *
  * @see https://core.telegram.org/bots/api#voice
  */
 class Voice
@@ -43,11 +44,13 @@ class Voice
 
     /**
      * @param string $fileId
+     *
      * @return Voice
      */
     public function setFileId(string $fileId): self
     {
         $this->fileId = $fileId;
+
         return $this;
     }
 
@@ -61,11 +64,13 @@ class Voice
 
     /**
      * @param int $duration
+     *
      * @return Voice
      */
     public function setDuration(int $duration): self
     {
         $this->duration = $duration;
+
         return $this;
     }
 
@@ -79,11 +84,13 @@ class Voice
 
     /**
      * @param string|null $mimeType
+     *
      * @return Voice
      */
     public function setMimeType(?string $mimeType): self
     {
         $this->mimeType = $mimeType;
+
         return $this;
     }
 
@@ -97,11 +104,13 @@ class Voice
 
     /**
      * @param int|null $fileSize
+     *
      * @return Voice
      */
     public function setFileSize(?int $fileSize): self
     {
         $this->fileSize = $fileSize;
+
         return $this;
     }
 }

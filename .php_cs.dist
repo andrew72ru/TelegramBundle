@@ -15,6 +15,7 @@ $rules = [
     'single_import_per_statement' => false,
     'concat_space' => ['spacing' => 'one'],
     'array_syntax' => ['syntax' => 'short'],
+    'no_superfluous_phpdoc_tags' => false,
 ];
 
 if (class_exists('\\PhpCsFixer\\Fixer\\ControlStructure\\YodaStyleFixer')) {

@@ -1,15 +1,15 @@
 <?php
 /**
- * 08.11.2019
+ * 08.11.2019.
  */
 
 declare(strict_types=1);
 
-
 namespace TelegramBundle\Entities;
 
 /**
- * Class ResponseParameters
+ * Class ResponseParameters.
+ *
  * @see https://core.telegram.org/bots/api#responseparameters
  */
 class ResponseParameters
@@ -34,11 +34,13 @@ class ResponseParameters
 
     /**
      * @param int|null $migrateToChatId
+     *
      * @return ResponseParameters
      */
     public function setMigrateToChatId(?int $migrateToChatId): self
     {
         $this->migrateToChatId = $migrateToChatId;
+
         return $this;
     }
 
@@ -52,11 +54,13 @@ class ResponseParameters
 
     /**
      * @param int|null $retryAfter
+     *
      * @return ResponseParameters
      */
     public function setRetryAfter(?int $retryAfter): self
     {
         $this->retryAfter = $retryAfter;
+
         return $this;
     }
 }
