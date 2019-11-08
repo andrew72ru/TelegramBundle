@@ -7,7 +7,6 @@
 
 namespace TelegramBundle\Methods;
 
-use Psr\Http\Message\UriInterface;
 use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 use Symfony\Contracts\HttpClient\ResponseInterface;
@@ -26,7 +25,7 @@ abstract class AbstractMethod implements MethodInterface
      * Send message to bot url with parameters with http-client.
      *
      * @param HttpClientInterface $client
-     * @param UriInterface|string $url
+     * @param string              $url
      * @param array               $options
      *
      * @return ResponseInterface
@@ -46,7 +45,7 @@ abstract class AbstractMethod implements MethodInterface
     /**
      * @param array $options
      *
-     * @return SendMessage
+     * @return MethodInterface
      */
     public function setOptions(array $options): MethodInterface
     {
@@ -56,7 +55,7 @@ abstract class AbstractMethod implements MethodInterface
                 try {
                     $property = (new \ReflectionClass($class))->getProperty($optionName);
                 } catch (\ReflectionException $e) {
-                    throw new \RuntimeException($e->getMessage(), $e->getCode());
+                    throw new \RuntimeException($e->getMessage(), (int) $e->getCode());
                 }
                 $property->setAccessible(true);
                 $property->setValue($this, $optionValue);

@@ -8,7 +8,6 @@ use Symfony\Component\HttpFoundation\Request;
 use TelegramBundle\Entities\Update;
 use TelegramBundle\Exceptions\TelegramException;
 use TelegramBundle\Methods\AbstractMethod;
-use TelegramBundle\SendMessageService;
 
 /**
  * Interface TelegramEventInterface.
@@ -26,9 +25,9 @@ interface TelegramEventInterface
     public function getUpdate(): Update;
 
     /**
-     * @return SendMessageService
+     * @return SendMessageInterface
      */
-    public function getService(): SendMessageService;
+    public function getService(): SendMessageInterface;
 
     /**
      * Make object for send as answer.

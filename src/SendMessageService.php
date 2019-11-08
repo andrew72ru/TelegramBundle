@@ -123,7 +123,7 @@ class SendMessageService implements Interfaces\SendMessageInterface
     public function processRequest(Request $request): Update
     {
         try {
-            $requestContent = \json_decode($request->getContent(), false, 512, JSON_THROW_ON_ERROR);
+            $requestContent = \json_decode((string) $request->getContent(), false, 512, JSON_THROW_ON_ERROR);
         } catch (\JsonException $e) {
             throw new TelegramException(\sprintf('Unable to decode request content: %s', $e->getMessage()));
         }
@@ -158,7 +158,7 @@ class SendMessageService implements Interfaces\SendMessageInterface
         }
 
         if ($event instanceof AbstractEvent && !$event->isPropagationStopped()) {
-            $this->dispatcher->dispatch($event, $name);
+            $this->dispatcher->dispatch($event);
             $event->stopPropagation();
         }
     }

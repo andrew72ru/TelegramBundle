@@ -47,7 +47,7 @@ class ClientController
 
     public function indexAction(Request $request): JsonResponse
     {
-        $this->logger->info($request->getContent());
+        $this->logger->info((string) $request->getContent());
         try {
             /** @var Update $update */
             $update = $this->sendMessageService->processRequest($request);
@@ -58,8 +58,10 @@ class ClientController
         if (($tgResponse = $update->getResponse()) !== null) {
             try {
                 return new JsonResponse($tgResponse->getContent(), 200, $tgResponse->getHeaders(), true);
-            } catch (ClientExceptionInterface | RedirectionExceptionInterface | ServerExceptionInterface | TransportExceptionInterface $e) {
-                return new JsonResponse($e->getMessage(), $e->getCode(), $e->getResponse()->getHeaders(false));
+            } catch (TransportExceptionInterface $e) {
+                throw new TelegramException($e->getMessage(), (int) $e->getCode());
+            } catch (ClientExceptionInterface | RedirectionExceptionInterface | ServerExceptionInterface $e) {
+                return new JsonResponse($e->getMessage(), (int) $e->getCode(), $e->getResponse()->getHeaders(false));
             }
         }
 

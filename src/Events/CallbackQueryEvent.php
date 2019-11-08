@@ -26,9 +26,6 @@ class CallbackQueryEvent extends AbstractEvent
      */
     public function getMethod(): MethodInterface
     {
-        $method = new SendMessage($this->update->getChatId());
-        $this->update->setAnswer($method);
-
-        return $method;
+        return new SendMessage((string) $this->update->getUpdateId());
     }
 }

@@ -42,7 +42,7 @@ class Venue
     /**
      * @return Location
      */
-    public function getLocation(): self
+    public function getLocation(): Location
     {
         return $this->location;
     }
@@ -52,7 +52,7 @@ class Venue
      *
      * @return Venue
      */
-    public function setLocation(Location $location): Venue
+    public function setLocation(Location $location): self
     {
         $this->location = $location;
 
@@ -72,7 +72,7 @@ class Venue
      *
      * @return Venue
      */
-    public function setTitle(string $title): Venue
+    public function setTitle(string $title): self
     {
         $this->title = $title;
 
@@ -92,7 +92,7 @@ class Venue
      *
      * @return Venue
      */
-    public function setAddress(string $address): Venue
+    public function setAddress(string $address): self
     {
         $this->address = $address;
 
@@ -112,7 +112,7 @@ class Venue
      *
      * @return Venue
      */
-    public function setFoursquareId(?string $foursquareId): Venue
+    public function setFoursquareId(?string $foursquareId): self
     {
         $this->foursquareId = $foursquareId;
 
@@ -132,7 +132,7 @@ class Venue
      *
      * @return Venue
      */
-    public function setFoursquareType(?string $foursquareType): Venue
+    public function setFoursquareType(?string $foursquareType): self
     {
         $this->foursquareType = $foursquareType;
 

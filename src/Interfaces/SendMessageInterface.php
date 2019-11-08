@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace TelegramBundle\Interfaces;
 
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 use Symfony\Contracts\HttpClient\ResponseInterface;
 use TelegramBundle\Entities\Update;
@@ -33,4 +34,15 @@ interface SendMessageInterface
      * @return ResponseInterface
      */
     public function getResponse(MethodInterface $method, Update $update, array $options = []): ResponseInterface;
+
+    /**
+     * Deserialize data to Update object.
+     *
+     * @see Update
+     *
+     * @param Request $request
+     *
+     * @return Update
+     */
+    public function processRequest(Request $request): Update;
 }

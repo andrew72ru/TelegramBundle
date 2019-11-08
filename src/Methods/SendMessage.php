@@ -26,7 +26,7 @@ class SendMessage extends AbstractMethod
     private $chat_id;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $text;
 

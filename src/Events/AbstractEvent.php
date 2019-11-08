@@ -27,7 +27,7 @@ abstract class AbstractEvent extends Event implements TelegramEventInterface
     protected $update;
 
     /**
-     * @var SendMessageService
+     * @var SendMessageInterface
      */
     protected $sendMessageService;
 
@@ -62,9 +62,9 @@ abstract class AbstractEvent extends Event implements TelegramEventInterface
     }
 
     /**
-     * @return SendMessageService
+     * @return SendMessageInterface
      */
-    public function getService(): SendMessageService
+    public function getService(): SendMessageInterface
     {
         return $this->sendMessageService;
     }
