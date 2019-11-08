@@ -1,0 +1,46 @@
+{
+  "update_id": 496284837,
+  "callback_query": {
+    "id": "401135005433894112",
+    "from": {
+      "id": 93396521,
+      "is_bot": false,
+      "first_name": "Oleg",
+      "last_name": "Koltsov",
+      "username": "oleg_koltsov",
+      "language_code": "ru-RU"
+    },
+    "message": {
+      "message_id": 437,
+      "from": {
+        "id": 611296757,
+        "is_bot": true,
+        "first_name": "Creative Dinner Bot (Iron Head)",
+        "username": "creative_dinner_bot"
+      },
+      "chat": {
+        "id": 93396521,
+        "first_name": "Oleg",
+        "last_name": "Koltsov",
+        "username": "oleg_koltsov",
+        "type": "private"
+      },
+      "date": 1532673871,
+      "text": "Ваш заказ::\n\n- Контейнер: 10,00 руб.\n- Манты: 120,00 руб.\n- Морковь Ча: 40,00 руб.\n-------------------------\nИтого:: 170,00 руб.",
+      "entities": [
+        {
+          "offset": 0,
+          "length": 11,
+          "type": "bold"
+        },
+        {
+          "offset": 109,
+          "length": 19,
+          "type": "bold"
+        }
+      ]
+    },
+    "chat_instance": "3076957437377499322",
+    "data": "{\"category\":9}"
+  }
+}

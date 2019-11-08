@@ -1,0 +1,30 @@
+{
+  "update_id": 606419695,
+  "message": {
+    "message_id": 353,
+    "from": {
+      "id": 68255702,
+      "is_bot": false,
+      "first_name": "Дмитрий",
+      "last_name": "Ларионов",
+      "username": "Dumkaaa",
+      "language_code": "ru"
+    },
+    "chat": {
+      "id": 68255702,
+      "first_name": "Дмитрий",
+      "last_name": "Ларионов",
+      "username": "Dumkaaa",
+      "type": "private"
+    },
+    "date": 1528182379,
+    "text": "\/code 7fc1eb8623b1e9ccc81",
+    "entities": [
+      {
+        "offset": 0,
+        "length": 5,
+        "type": "bot_command"
+      }
+    ]
+  }
+}

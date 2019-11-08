@@ -1,0 +1,80 @@
+{
+  "update_id": 611506803,
+  "callback_query": {
+    "id": "401135005439144948",
+    "from": {
+      "id": 93396521,
+      "is_bot": false,
+      "first_name": "Oleg",
+      "last_name": "Koltsov",
+      "username": "oleg_koltsov",
+      "language_code": "ru"
+    },
+    "message": {
+      "message_id": 712,
+      "from": {
+        "id": 611296757,
+        "is_bot": true,
+        "first_name": "Creative Dinner Bot (Iron Head)",
+        "username": "creative_dinner_bot"
+      },
+      "chat": {
+        "id": 93396521,
+        "first_name": "Oleg",
+        "last_name": "Koltsov",
+        "username": "oleg_koltsov",
+        "type": "private"
+      },
+      "date": 1559889177,
+      "text": "Выберите категорию",
+      "reply_markup": {
+        "inline_keyboard": [
+          [
+            {
+              "text": "Салаты",
+              "callback_data": "{\"category\":8}"
+            }
+          ],
+          [
+            {
+              "text": "Первые блюда",
+              "callback_data": "{\"category\":9}"
+            }
+          ],
+          [
+            {
+              "text": "Вторые блюда",
+              "callback_data": "{\"category\":10}"
+            }
+          ],
+          [
+            {
+              "text": "Гарниры",
+              "callback_data": "{\"category\":11}"
+            }
+          ],
+          [
+            {
+              "text": "Соусы",
+              "callback_data": "{\"category\":12}"
+            }
+          ],
+          [
+            {
+              "text": "Выпечка",
+              "callback_data": "{\"category\":13}"
+            }
+          ],
+          [
+            {
+              "text": "Напитки",
+              "callback_data": "{\"category\":14}"
+            }
+          ]
+        ]
+      }
+    },
+    "chat_instance": "3076957437377499322",
+    "data": "{\"category\":10}"
+  }
+}

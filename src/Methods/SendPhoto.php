@@ -7,11 +7,6 @@
 
 namespace TelegramBundle\Methods;
 
-use GuzzleHttp\ClientInterface;
-use GuzzleHttp\Exception\GuzzleException;
-use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\UriInterface;
-
 class SendPhoto extends AbstractMethod
 {
     /**
@@ -81,7 +76,7 @@ class SendPhoto extends AbstractMethod
         unset($properties['methodName']);
 
         foreach ($properties as $propertyName => $propertyValue) {
-            if (!is_null($propertyValue)) {
+            if ($propertyValue !== null) {
                 $result[] = [
                     'name' => $propertyName,
                     'contents' => $propertyValue,
@@ -90,23 +85,6 @@ class SendPhoto extends AbstractMethod
         }
 
         return $result;
-    }
-
-    /**
-     * @param ClientInterface     $client
-     * @param UriInterface|string $url
-     *
-     * @return ResponseInterface
-     *
-     * @throws GuzzleException
-     */
-    public function send(ClientInterface $client, $url): ResponseInterface
-    {
-        return $client->request('POST', $url, [
-            'multipart' => $this->__toArray(),
-            'sink' => '/tmp/' . uniqid(),
-            'curl' => AbstractMethod::$curl,
-        ]);
     }
 
     /**

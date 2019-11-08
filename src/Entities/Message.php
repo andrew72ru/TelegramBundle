@@ -16,7 +16,7 @@ namespace TelegramBundle\Entities;
 class Message
 {
     /**
-     * @var string
+     * @var int
      */
     private $messageId;
 
@@ -252,19 +252,19 @@ class Message
     private $replyMarkup;
 
     /**
-     * @return string
+     * @return int
      */
-    public function getMessageId(): string
+    public function getMessageId(): int
     {
         return $this->messageId;
     }
 
     /**
-     * @param string $messageId
+     * @param int $messageId
      *
      * @return Message
      */
-    public function setMessageId(string $messageId): self
+    public function setMessageId(int $messageId): self
     {
         $this->messageId = $messageId;
 
