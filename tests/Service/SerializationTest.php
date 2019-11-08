@@ -1,13 +1,11 @@
 <?php
 /**
- * 08.11.2019
+ * 08.11.2019.
  */
 
 declare(strict_types=1);
 
-
 namespace App\Tests\Service;
-
 
 use App\Tests\TestCase;
 use Symfony\Component\Serializer\SerializerInterface;

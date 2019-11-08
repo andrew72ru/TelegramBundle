@@ -8,7 +8,8 @@
 namespace TelegramBundle\Entities;
 
 /**
- * Class Sticker
+ * Class Sticker.
+ *
  * @see https://core.telegram.org/bots/api#sticker
  */
 class Sticker
@@ -68,11 +69,13 @@ class Sticker
 
     /**
      * @param string $fileId
+     *
      * @return Sticker
      */
     public function setFileId(string $fileId): self
     {
         $this->fileId = $fileId;
+
         return $this;
     }
 
@@ -86,11 +89,13 @@ class Sticker
 
     /**
      * @param int $width
+     *
      * @return Sticker
      */
     public function setWidth(int $width): self
     {
         $this->width = $width;
+
         return $this;
     }
 
@@ -104,11 +109,13 @@ class Sticker
 
     /**
      * @param int $height
+     *
      * @return Sticker
      */
     public function setHeight(int $height): self
     {
         $this->height = $height;
+
         return $this;
     }
 
@@ -122,11 +129,13 @@ class Sticker
 
     /**
      * @param bool $isAnimated
+     *
      * @return Sticker
      */
     public function setIsAnimated(bool $isAnimated): self
     {
         $this->isAnimated = $isAnimated;
+
         return $this;
     }
 
@@ -140,11 +149,13 @@ class Sticker
 
     /**
      * @param PhotoSize|null $thumb
+     *
      * @return Sticker
      */
     public function setThumb(?PhotoSize $thumb): self
     {
         $this->thumb = $thumb;
+
         return $this;
     }
 
@@ -158,11 +169,13 @@ class Sticker
 
     /**
      * @param string|null $emoji
+     *
      * @return Sticker
      */
     public function setEmoji(?string $emoji): self
     {
         $this->emoji = $emoji;
+
         return $this;
     }
 
@@ -176,11 +189,13 @@ class Sticker
 
     /**
      * @param string|null $setName
+     *
      * @return Sticker
      */
     public function setSetName(?string $setName): self
     {
         $this->setName = $setName;
+
         return $this;
     }
 
@@ -194,11 +209,13 @@ class Sticker
 
     /**
      * @param mixed $maskPosition
+     *
      * @return Sticker
      */
     public function setMaskPosition($maskPosition)
     {
         $this->maskPosition = $maskPosition;
+
         return $this;
     }
 
@@ -212,11 +229,13 @@ class Sticker
 
     /**
      * @param int $fileSize
+     *
      * @return Sticker
      */
     public function setFileSize(int $fileSize): self
     {
         $this->fileSize = $fileSize;
+
         return $this;
     }
 }

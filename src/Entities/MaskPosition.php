@@ -1,15 +1,15 @@
 <?php
 /**
- * 08.11.2019
+ * 08.11.2019.
  */
 
 declare(strict_types=1);
 
-
 namespace TelegramBundle\Entities;
 
 /**
- * Class MaskPosition
+ * Class MaskPosition.
+ *
  * @see https://core.telegram.org/bots/api#maskposition
  */
 class MaskPosition
@@ -44,11 +44,13 @@ class MaskPosition
 
     /**
      * @param string $point
+     *
      * @return MaskPosition
      */
     public function setPoint(string $point): self
     {
         $this->point = $point;
+
         return $this;
     }
 
@@ -62,11 +64,13 @@ class MaskPosition
 
     /**
      * @param float $xShift
+     *
      * @return MaskPosition
      */
     public function setXShift(float $xShift): self
     {
         $this->xShift = $xShift;
+
         return $this;
     }
 
@@ -80,11 +84,13 @@ class MaskPosition
 
     /**
      * @param float $yShift
+     *
      * @return MaskPosition
      */
     public function setYShift(float $yShift): self
     {
         $this->yShift = $yShift;
+
         return $this;
     }
 
@@ -98,11 +104,13 @@ class MaskPosition
 
     /**
      * @param float $scale
+     *
      * @return MaskPosition
      */
     public function setScale(float $scale): self
     {
         $this->scale = $scale;
+
         return $this;
     }
 }
