@@ -13,7 +13,7 @@ use Throwable;
  * Class TelegramException
  * Simple exception for telegram sender.
  */
-class TelegramException extends \Exception
+class TelegramException extends \RuntimeException
 {
     public function __construct(string $message = '', int $code = 500, Throwable $previous = null)
     {

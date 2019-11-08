@@ -4,18 +4,23 @@ declare(strict_types=1);
 namespace TelegramBundle\Controller;
 
 use Psr\Log\LoggerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\{JsonResponse, Request, Response};
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
+use Symfony\Contracts\HttpClient\{
+    Exception\ClientExceptionInterface,
+    Exception\RedirectionExceptionInterface,
+    Exception\ServerExceptionInterface,
+    Exception\TransportExceptionInterface
+};
+use TelegramBundle\Entities\Update;
 use TelegramBundle\Exceptions\TelegramException;
 use TelegramBundle\Interfaces\SendMessageInterface;
 
 /**
  * Class ClientController
- * Endpoint to telegram webhook.
+ * Endpoint to telegram webHook.
  */
-class ClientController extends AbstractController
+class ClientController
 {
     /**
      * @var SendMessageInterface
@@ -29,6 +34,8 @@ class ClientController extends AbstractController
 
     /**
      * ClientController constructor.
+     * @param SendMessageInterface $sendMessage
+     * @param LoggerInterface $logger
      */
     public function __construct(SendMessageInterface $sendMessage, LoggerInterface $logger)
     {
@@ -40,15 +47,20 @@ class ClientController extends AbstractController
     {
         $this->logger->info($request->getContent());
         try {
+            /** @var Update $update */
             $update = $this->sendMessageService->processRequest($request);
         } catch (TelegramException $e) {
             throw new BadRequestHttpException('Wrong data: ' . $e->getMessage());
         }
 
-        if ($tgResponse = $update->getResponse()) {
-            return new JsonResponse($tgResponse->getBody()->getContents(), 200, $tgResponse->getHeaders(), true);
+        if (($tgResponse = $update->getResponse()) !== null) {
+            try {
+                return new JsonResponse($tgResponse->getContent(), 200, $tgResponse->getHeaders(), true);
+            } catch (ClientExceptionInterface | RedirectionExceptionInterface | ServerExceptionInterface | TransportExceptionInterface $e) {
+                return new JsonResponse($e->getMessage(), $e->getCode(), $e->getResponse()->getHeaders(false));
+            }
         }
 
-        return $this->json([]);
+        return new JsonResponse(null, Response::HTTP_NO_CONTENT);
     }
 }

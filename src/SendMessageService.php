@@ -11,15 +11,22 @@ namespace TelegramBundle;
 
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpClient\HttpClient;
-use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\{Request, Response};
+use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
-use Symfony\Contracts\HttpClient\HttpClientInterface;
+use Symfony\Contracts\HttpClient\{
+    Exception\ClientExceptionInterface,
+    Exception\RedirectionExceptionInterface,
+    Exception\ServerExceptionInterface,
+    Exception\TransportExceptionInterface,
+    HttpClientInterface,
+    ResponseInterface
+};
 use TelegramBundle\Entities\Update;
-use TelegramBundle\Events\AbstractEvent;
-use TelegramBundle\Events\CallbackQueryEvent;
-use TelegramBundle\Events\CommandEvent;
+use TelegramBundle\Events\{AbstractEvent, CallbackQueryEvent, CommandEvent};
 use TelegramBundle\Exceptions\TelegramException;
+use TelegramBundle\Interfaces\MethodInterface;
 
 /**
  * Class SendMessage.
@@ -76,12 +83,31 @@ class SendMessageService implements Interfaces\SendMessageInterface
     }
 
     /**
-     * @param string|null $method
-     * @return string
+     * @return string Base API url
      */
-    public function getApiUrl(string $method): string
+    public function getApiUrl(): string
     {
-        return sprintf('%s/%s', $this->apiUrl, ltrim($method, '/'));
+        return $this->apiUrl;
+    }
+
+    /**
+     * @param MethodInterface $method
+     * @param Update $update
+     * @param array $options
+     * @return ResponseInterface
+     * @throws ClientExceptionInterface
+     * @throws RedirectionExceptionInterface
+     * @throws ServerExceptionInterface
+     * @throws TransportExceptionInterface
+     */
+    public function getResponse(MethodInterface $method, Update $update, array $options = []): ResponseInterface
+    {
+        $response = $method->send($this->client, $this->apiUrl, $options);
+        if ($response->getStatusCode() !== Response::HTTP_OK) {
+            throw new HttpException((int)$response->getStatusCode(), $response->getContent(false));
+        }
+
+        return $response;
     }
 
     /**

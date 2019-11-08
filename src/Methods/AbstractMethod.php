@@ -7,10 +7,9 @@
 
 namespace TelegramBundle\Methods;
 
-use GuzzleHttp\Exception\GuzzleException;
+use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 use TelegramBundle\Interfaces\MethodInterface;
-use GuzzleHttp\ClientInterface;
 use Symfony\Contracts\HttpClient\ResponseInterface;
 use Psr\Http\Message\UriInterface;
 
@@ -19,30 +18,28 @@ use Psr\Http\Message\UriInterface;
  */
 abstract class AbstractMethod implements MethodInterface
 {
-//    public static $curl = [
-//        CURLOPT_RESOLVE => ['api.telegram.org:443:149.154.167.220'],
-//    ];
-
     protected static $defaultOptions = [
-        'parse_mode' => 'Markdown',
+        'parse_mode' => 'HTML',
     ];
 
     /**
      * Send message to bot url with parameters with http-client.
      *
-     * @param HttpClientInterface     $client
+     * @param HttpClientInterface $client
      * @param UriInterface|string $url
      *
+     * @param array $options
      * @return ResponseInterface
+     * @throws TransportExceptionInterface
      */
-    public function send(HttpClientInterface $client, $url): ResponseInterface
+    public function send(HttpClientInterface $client, $url, $options = []): ResponseInterface
     {
-        // TODO Refactor
-//        return $client->request('POST', $url, [
-//            'form_params' => $this->__toArray(),
-//            'sink' => '/tmp/' . uniqid('sink-', true),
-//            'curl' => self::$curl,
-//        ]);
+        $url = \sprintf('%s/%s', $url, $this->getMethodName());
+
+        return $client->request('POST', $url, [
+            'form_params' => $this->__toArray(),
+            'resolve' => ['api.telegram.org' => '443:149.154.167.220'],
+        ]);
     }
 
     /**
