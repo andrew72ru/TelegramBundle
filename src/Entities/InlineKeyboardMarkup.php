@@ -20,38 +20,27 @@ class InlineKeyboardMarkup extends AbstractEntity
     public const FIELD_NAME = 'inline_keyboard';
 
     /**
-     * @var array|InlineKeyboardButton
+     * @var array
+     * Array of button rows, each represented by an Array of @see InlineKeyboardButton objects
      */
-    private $inline_keyboard = [];
+    private $inlineKeyboard = [];
 
     /**
      * @return array
      */
     public function getInlineKeyboard(): array
     {
-        return $this->inline_keyboard;
+        return $this->inlineKeyboard;
     }
 
     /**
-     * @param array $inline_keyboard
+     * @param array $inlineKeyboard
      *
      * @return InlineKeyboardMarkup
      */
-    public function setInlineKeyboard(array $inline_keyboard): InlineKeyboardMarkup
+    public function setInlineKeyboard(array $inlineKeyboard): InlineKeyboardMarkup
     {
-        $this->inline_keyboard = $inline_keyboard;
-
-        return $this;
-    }
-
-    /**
-     * @param InlineKeyboardButton $button
-     *
-     * @return InlineKeyboardMarkup
-     */
-    public function addButton(InlineKeyboardButton $button): self
-    {
-        $this->inline_keyboard[] = [$button];
+        $this->inlineKeyboard = $inlineKeyboard;
 
         return $this;
     }

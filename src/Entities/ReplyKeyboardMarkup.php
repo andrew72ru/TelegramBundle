@@ -13,24 +13,25 @@ namespace TelegramBundle\Entities;
  *
  * @see https://core.telegram.org/bots/api#replykeyboardmarkup
  */
-class ReplyKeyboardMarkup extends AbstractEntity
+class ReplyKeyboardMarkup
 {
     const PROPERTY_NAME = 'reply_markup';
 
     /**
      * @var array
+     * Array of button rows, each represented by an Array of @see KeyboardButton objects
      */
     private $keyboard = [];
 
     /**
      * @var bool
      */
-    private $resize_keyboard = true;
+    private $resizeKeyboard = true;
 
     /**
      * @var bool
      */
-    private $one_time_keyboard = true;
+    private $oneTimeKeyboard = true;
 
     /**
      * @var bool
@@ -47,25 +48,11 @@ class ReplyKeyboardMarkup extends AbstractEntity
 
     /**
      * @param array $keyboard
-     *
      * @return ReplyKeyboardMarkup
      */
-    public function setKeyboard(array $keyboard): ReplyKeyboardMarkup
+    public function setKeyboard($keyboard): self
     {
         $this->keyboard = $keyboard;
-
-        return $this;
-    }
-
-    /**
-     * @param KeyboardButton $button
-     *
-     * @return ReplyKeyboardMarkup
-     */
-    public function addButton(KeyboardButton $button): self
-    {
-        $this->keyboard[] = [$button];
-
         return $this;
     }
 
@@ -74,18 +61,16 @@ class ReplyKeyboardMarkup extends AbstractEntity
      */
     public function isResizeKeyboard(): bool
     {
-        return $this->resize_keyboard;
+        return $this->resizeKeyboard;
     }
 
     /**
-     * @param bool $resize_keyboard
-     *
+     * @param bool $resizeKeyboard
      * @return ReplyKeyboardMarkup
      */
-    public function setResizeKeyboard(bool $resize_keyboard): ReplyKeyboardMarkup
+    public function setResizeKeyboard(bool $resizeKeyboard): self
     {
-        $this->resize_keyboard = $resize_keyboard;
-
+        $this->resizeKeyboard = $resizeKeyboard;
         return $this;
     }
 
@@ -94,18 +79,16 @@ class ReplyKeyboardMarkup extends AbstractEntity
      */
     public function isOneTimeKeyboard(): bool
     {
-        return $this->one_time_keyboard;
+        return $this->oneTimeKeyboard;
     }
 
     /**
-     * @param bool $one_time_keyboard
-     *
+     * @param bool $oneTimeKeyboard
      * @return ReplyKeyboardMarkup
      */
-    public function setOneTimeKeyboard(bool $one_time_keyboard): ReplyKeyboardMarkup
+    public function setOneTimeKeyboard(bool $oneTimeKeyboard): self
     {
-        $this->one_time_keyboard = $one_time_keyboard;
-
+        $this->oneTimeKeyboard = $oneTimeKeyboard;
         return $this;
     }
 
@@ -119,13 +102,11 @@ class ReplyKeyboardMarkup extends AbstractEntity
 
     /**
      * @param bool $selective
-     *
      * @return ReplyKeyboardMarkup
      */
-    public function setSelective(bool $selective): ReplyKeyboardMarkup
+    public function setSelective(bool $selective): self
     {
         $this->selective = $selective;
-
         return $this;
     }
 }

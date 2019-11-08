@@ -1,37 +1,50 @@
 <?php
 /**
- * User: andrew
- * Date: 29/03/2018
- * Time: 16:18.
+ * 08.11.2019
  */
+
+declare(strict_types=1);
+
 
 namespace TelegramBundle\Entities;
 
-/**
- * Class Voice
- * @see https://core.telegram.org/bots/api#voice
- */
-class Voice
+
+abstract class BaseVideo
 {
     /**
      * @var string
      */
-    private $fileId;
+    protected $fileId;
 
     /**
      * @var int
      */
-    private $duration;
+    protected $width;
+
+    /**
+     * @var int
+     */
+    protected $height;
+
+    /**
+     * @var int
+     */
+    protected $duration;
+
+    /**
+     * @var PhotoSize|null
+     */
+    protected $thumb;
 
     /**
      * @var string|null
      */
-    private $mimeType;
+    protected $mimeType;
 
     /**
      * @var int|null
      */
-    private $fileSize;
+    protected $fileSize;
 
     /**
      * @return string
@@ -43,11 +56,47 @@ class Voice
 
     /**
      * @param string $fileId
-     * @return Voice
+     * @return self
      */
     public function setFileId(string $fileId): self
     {
         $this->fileId = $fileId;
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getWidth(): int
+    {
+        return $this->width;
+    }
+
+    /**
+     * @param int $width
+     * @return self
+     */
+    public function setWidth(int $width): self
+    {
+        $this->width = $width;
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getHeight(): int
+    {
+        return $this->height;
+    }
+
+    /**
+     * @param int $height
+     * @return self
+     */
+    public function setHeight(int $height): self
+    {
+        $this->height = $height;
         return $this;
     }
 
@@ -61,11 +110,29 @@ class Voice
 
     /**
      * @param int $duration
-     * @return Voice
+     * @return self
      */
     public function setDuration(int $duration): self
     {
         $this->duration = $duration;
+        return $this;
+    }
+
+    /**
+     * @return PhotoSize|null
+     */
+    public function getThumb(): ?PhotoSize
+    {
+        return $this->thumb;
+    }
+
+    /**
+     * @param PhotoSize|null $thumb
+     * @return self
+     */
+    public function setThumb(?PhotoSize $thumb): self
+    {
+        $this->thumb = $thumb;
         return $this;
     }
 
@@ -79,7 +146,7 @@ class Voice
 
     /**
      * @param string|null $mimeType
-     * @return Voice
+     * @return self
      */
     public function setMimeType(?string $mimeType): self
     {
@@ -97,11 +164,12 @@ class Voice
 
     /**
      * @param int|null $fileSize
-     * @return Voice
+     * @return self
      */
     public function setFileSize(?int $fileSize): self
     {
         $this->fileSize = $fileSize;
         return $this;
     }
+
 }
