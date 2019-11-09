@@ -12,9 +12,6 @@ namespace TelegramBundle\Methods;
  */
 class SendMessage extends AbstractMethod
 {
-    public const PARSE_MODE_MD = 'Markdown';
-    public const PARSE_MODE_HTML = 'HTML';
-
     /**
      * @var string Name of telegram method
      */
@@ -23,7 +20,7 @@ class SendMessage extends AbstractMethod
     /**
      * @var string
      */
-    private $chat_id;
+    private $chatId;
 
     /**
      * @var string|null
@@ -33,27 +30,27 @@ class SendMessage extends AbstractMethod
     /**
      * @var string
      */
-    private $parse_mode;
+    private $parseMode;
 
     /**
      * @var bool
      */
-    private $disable_web_page_preview = false;
+    private $disableWebPagePreview = false;
 
     /**
      * @var bool
      */
-    private $disable_notification = false;
+    private $disableNotification = false;
 
     /**
      * @var string|null
      */
-    private $reply_to_message_id = null;
+    private $replyToMessage_id = null;
 
     /**
      * @var array
      */
-    private $reply_markup = [];
+    private $replyMarkup = [];
 
     /**
      * SendMessage constructor.
@@ -66,19 +63,19 @@ class SendMessage extends AbstractMethod
     {
         $options = array_merge($options, self::$defaultOptions);
         $this->text = $message;
-        $this->chat_id = $chatId;
+        $this->chatId = $chatId;
 
         $this->setOptions($options);
     }
 
     /**
-     * @param array $reply_markup
+     * @param array $replyMarkup
      *
      * @return SendMessage
      */
-    public function setReplyMarkup(array $reply_markup): self
+    public function setReplyMarkup(array $replyMarkup): self
     {
-        $this->reply_markup = $reply_markup;
+        $this->replyMarkup = $replyMarkup;
 
         return $this;
     }
@@ -88,20 +85,21 @@ class SendMessage extends AbstractMethod
      */
     public function __toArray(): array
     {
-        $result = [
-            'chat_id' => $this->chat_id,
+        $result = \array_merge(self::$defaultOptions, [
+            'chat_id' => $this->chatId,
             'text' => $this->text,
-            'parse_mode' => $this->parse_mode,
-            'disable_web_page_preview' => $this->disable_web_page_preview,
-            'disable_notification' => $this->disable_notification,
-        ];
+            'disable_web_page_preview' => $this->disableWebPagePreview,
+            'disable_notification' => $this->disableNotification,
+        ]);
+        if ($this->parseMode !== null)
+            $result['parse_mode'] = $this->parseMode;
 
-        if (null !== $this->reply_to_message_id) {
-            $result['reply_to_message_id'] = $this->reply_to_message_id;
+        if (null !== $this->replyToMessage_id) {
+            $result['reply_to_message_id'] = $this->replyToMessage_id;
         }
 
-        if (!empty($this->reply_markup)) {
-            $result['reply_markup'] = json_encode($this->reply_markup, JSON_THROW_ON_ERROR);
+        if (!empty($this->replyMarkup)) {
+            $result['reply_markup'] = json_encode($this->replyMarkup, JSON_THROW_ON_ERROR);
         }
 
         return $result;

@@ -13,6 +13,13 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpClient\HttpClient;
 use Symfony\Component\HttpFoundation\{Request, Response};
 use Symfony\Component\HttpKernel\Exception\HttpException;
+use Symfony\Component\PropertyInfo\Extractor\ReflectionExtractor;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Normalizer\ArrayDenormalizer;
+use Symfony\Component\Serializer\Normalizer\DateTimeNormalizer;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\NameConverter\CamelCaseToSnakeCaseNameConverter;
+use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 use Symfony\Contracts\HttpClient\{
@@ -63,16 +70,23 @@ class SendMessageService implements Interfaces\SendMessageInterface
     public function __construct(ContainerInterface $container, EventDispatcherInterface $dispatcher, SerializerInterface $serializer)
     {
         $this->dispatcher = $dispatcher;
-
-        $this->apiUrl = sprintf('%s/bot%s/', rtrim($container->getParameter('telegram.api.url'), '/'), $container->getParameter('telegram.api.token'));
+        $this->apiUrl = sprintf('/bot%s', $container->getParameter('telegram.api.token'));
 
         $this->client = HttpClient::create([
             'http_version' => '2.0',
+            'base_uri' => rtrim($container->getParameter('telegram.api.url'), '/'),
+            'resolve' => ['api.telegram.org' => '443:149.154.167.220'],
             'headers' => [
                 'Content-Type' => 'application/json',
             ],
         ]);
-        $this->serializer = $serializer;
+        $this->serializer = new Serializer([
+            new ObjectNormalizer(null, new CamelCaseToSnakeCaseNameConverter(), null, new ReflectionExtractor()),
+            new DateTimeNormalizer(),
+            new ArrayDenormalizer(),
+        ], [
+            new JsonEncoder(),
+        ]);
     }
 
     /**
@@ -93,24 +107,17 @@ class SendMessageService implements Interfaces\SendMessageInterface
 
     /**
      * @param MethodInterface $method
-     * @param Update          $update
      * @param array           $options
      *
      * @return ResponseInterface
      *
-     * @throws ClientExceptionInterface
-     * @throws RedirectionExceptionInterface
-     * @throws ServerExceptionInterface
      * @throws TransportExceptionInterface
      */
-    public function getResponse(MethodInterface $method, Update $update, array $options = []): ResponseInterface
+    public function getResponse(MethodInterface $method, array $options = []): ResponseInterface
     {
-        $response = $method->send($this->client, $this->apiUrl, $options);
-        if ($response->getStatusCode() !== Response::HTTP_OK) {
-            throw new HttpException((int) $response->getStatusCode(), $response->getContent(false));
-        }
+        $url = \sprintf('%s/%s', $this->apiUrl, $method->getMethodName());
 
-        return $response;
+        return $this->client->request(Request::METHOD_POST, $url, $options);
     }
 
     /**
@@ -123,14 +130,8 @@ class SendMessageService implements Interfaces\SendMessageInterface
     public function processRequest(Request $request): Update
     {
         try {
-            $requestContent = \json_decode((string) $request->getContent(), false, 512, JSON_THROW_ON_ERROR);
-        } catch (\JsonException $e) {
-            throw new TelegramException(\sprintf('Unable to decode request content: %s', $e->getMessage()));
-        }
-
-        try {
             /** @var Update $update */
-            $update = $this->serializer->deserialize($requestContent, Update::class, 'json');
+            $update = $this->serializer->deserialize((string) $request->getContent(), Update::class, 'json');
         } catch (\Throwable $e) {
             throw new TelegramException(\sprintf('Unable to deserialize content: %s', $e->getMessage()));
         }
@@ -149,12 +150,10 @@ class SendMessageService implements Interfaces\SendMessageInterface
         $name = null;
         if (null !== $update->getMessage()) {
             $event = new CommandEvent($request, $update, $this);
-            $name = CommandEvent::NAME;
         }
 
         if (null !== $update->getCallbackQuery()) {
             $event = new CallbackQueryEvent($request, $update, $this);
-            $name = CallbackQueryEvent::NAME;
         }
 
         if ($event instanceof AbstractEvent && !$event->isPropagationStopped()) {

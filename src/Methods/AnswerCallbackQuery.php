@@ -8,16 +8,16 @@
 namespace TelegramBundle\Methods;
 
 /**
- * Class answerCallbackQuery.
+ * Class AnswerCallbackQuery.
  *
  * @see https://core.telegram.org/bots/api#answercallbackquery
  */
-class answerCallbackQuery extends AbstractMethod
+class AnswerCallbackQuery extends AbstractMethod
 {
     /**
      * @var string Name of telegram method
      */
-    public $methodName = 'answerCallbackQuery';
+    public $methodName = 'AnswerCallbackQuery';
 
     /**
      * @var string Unique identifier for the query to be answered
@@ -60,7 +60,7 @@ class answerCallbackQuery extends AbstractMethod
     /**
      * @param string $callback_query_id
      *
-     * @return answerCallbackQuery
+     * @return AnswerCallbackQuery
      */
     public function setCallbackQueryId(string $callback_query_id): self
     {
@@ -80,7 +80,7 @@ class answerCallbackQuery extends AbstractMethod
     /**
      * @param string|null $text
      *
-     * @return answerCallbackQuery
+     * @return AnswerCallbackQuery
      */
     public function setText(?string $text): self
     {
@@ -100,7 +100,7 @@ class answerCallbackQuery extends AbstractMethod
     /**
      * @param bool $show_alert
      *
-     * @return answerCallbackQuery
+     * @return AnswerCallbackQuery
      */
     public function setShowAlert(bool $show_alert): self
     {
@@ -120,7 +120,7 @@ class answerCallbackQuery extends AbstractMethod
     /**
      * @param string|null $url
      *
-     * @return answerCallbackQuery
+     * @return AnswerCallbackQuery
      */
     public function setUrl(?string $url): self
     {
@@ -140,7 +140,7 @@ class answerCallbackQuery extends AbstractMethod
     /**
      * @param int|null $cache_time
      *
-     * @return answerCallbackQuery
+     * @return AnswerCallbackQuery
      */
     public function setCacheTime(?int $cache_time): self
     {

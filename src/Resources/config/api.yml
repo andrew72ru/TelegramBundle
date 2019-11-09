@@ -7,9 +7,9 @@ parameters:
       token:
       proxy:
 
-framework:
-  serializer:
-    name_converter: 'serializer.name_converter.camel_case_to_snake_case'
+#framework:
+#  serializer:
+#    name_converter: 'serializer.name_converter.camel_case_to_snake_case'
 
 services:
   get_set_method_normalizer:
@@ -24,9 +24,6 @@ services:
         - '@service_container'
         - '@event_dispatcher'
         - '@serializer'
-
-  Symfony\Component\Serializer\NameConverter\CamelCaseToSnakeCaseNameConverter:
-    tags: ['']
 
   TelegramBundle\Controller\ClientController:
       class: TelegramBundle\Controller\ClientController

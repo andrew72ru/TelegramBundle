@@ -25,17 +25,16 @@ interface MethodInterface
     public function getMethodName(): string;
 
     /**
-     * Send message to bot url with parameters with http-client.
+     * Send message to bot url with parameters with http-client throws Send Message Service.
      *
-     * @param HttpClientInterface $client
-     * @param string              $url
-     * @param array               $options
+     * @param SendMessageInterface $service
+     * @param array                $options
      *
      * @return ResponseInterface
      *
      * @throws TransportExceptionInterface
      */
-    public function send(HttpClientInterface $client, $url, array $options = []): ResponseInterface;
+    public function send(SendMessageInterface $service, array $options = []): ResponseInterface;
 
     /**
      * Return array with Telegram method parameters as keys and parameters keys as values.

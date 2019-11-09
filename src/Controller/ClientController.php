@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace TelegramBundle\Controller;
 
 use Psr\Log\LoggerInterface;
-use Symfony\Component\HttpFoundation\{JsonResponse, Request, Response};
+use Symfony\Component\HttpFoundation\{HeaderUtils, JsonResponse, Request, Response};
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Symfony\Contracts\HttpClient\{
     Exception\ClientExceptionInterface,
@@ -61,7 +61,10 @@ class ClientController
             } catch (TransportExceptionInterface $e) {
                 throw new TelegramException($e->getMessage(), (int) $e->getCode());
             } catch (ClientExceptionInterface | RedirectionExceptionInterface | ServerExceptionInterface $e) {
-                return new JsonResponse($e->getMessage(), (int) $e->getCode(), $e->getResponse()->getHeaders(false));
+                return new JsonResponse([
+                    'error' => $e->getMessage(),
+                    'response' => $e->getResponse()->toArray(false),
+                ], (int) $e->getCode());
             }
         }
 

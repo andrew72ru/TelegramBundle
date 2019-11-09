@@ -11,35 +11,34 @@ use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 use Symfony\Contracts\HttpClient\ResponseInterface;
 use TelegramBundle\Interfaces\MethodInterface;
+use TelegramBundle\Interfaces\SendMessageInterface;
 
 /**
  * Class AbstractMethod.
  */
 abstract class AbstractMethod implements MethodInterface
 {
+    public const PARSE_MODE_MD = 'Markdown';
+    public const PARSE_MODE_HTML = 'HTML';
+
     protected static $defaultOptions = [
-        'parse_mode' => 'HTML',
+        'parse_mode' => self::PARSE_MODE_HTML,
     ];
 
     /**
      * Send message to bot url with parameters with http-client.
      *
-     * @param HttpClientInterface $client
-     * @param string              $url
-     * @param array               $options
+     * @param SendMessageInterface $service
+     * @param array $options
      *
      * @return ResponseInterface
-     *
      * @throws TransportExceptionInterface
      */
-    public function send(HttpClientInterface $client, $url, $options = []): ResponseInterface
+    public function send(SendMessageInterface $service, $options = []): ResponseInterface
     {
-        $url = \sprintf('%s/%s', $url, $this->getMethodName());
-
-        return $client->request('POST', $url, [
-            'form_params' => $this->__toArray(),
-            'resolve' => ['api.telegram.org' => '443:149.154.167.220'],
-        ]);
+        return $service->getResponse($this, \array_merge([
+            'json' => $this->__toArray(),
+        ], $options));
     }
 
     /**

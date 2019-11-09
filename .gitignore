@@ -22,3 +22,4 @@
 ###< friendsofphp/php-cs-fixer ###
 
 .env
+.composer.lock
