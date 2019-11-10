@@ -21,8 +21,6 @@ interface SendMessageInterface
     public function getClient(): HttpClientInterface;
 
     /**
-     * @param string $method
-     *
      * @return string
      */
     public function getApiUrl(): string;
