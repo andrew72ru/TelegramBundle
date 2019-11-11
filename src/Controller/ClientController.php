@@ -47,7 +47,9 @@ class ClientController
 
     public function indexAction(Request $request): JsonResponse
     {
-        $this->logger->info((string) $request->getContent());
+        $this->logger->info((string) $request->getContent(), [
+            'tag' => 'telegram.request',
+        ]);
         try {
             /** @var Update $update */
             $update = $this->sendMessageService->processRequest($request);
