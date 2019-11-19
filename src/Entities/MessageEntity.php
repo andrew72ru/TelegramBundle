@@ -48,7 +48,7 @@ class MessageEntity
     private $url;
 
     /**
-     * @var User|null Optional. For “text_mention” only, the mentioned user
+     * @var TelegramUser|null Optional. For “text_mention” only, the mentioned user
      */
     private $user;
 
@@ -133,19 +133,19 @@ class MessageEntity
     }
 
     /**
-     * @return User|null
+     * @return TelegramUser|null
      */
-    public function getUser(): ?User
+    public function getUser(): ?TelegramUser
     {
         return $this->user;
     }
 
     /**
-     * @param User|null $user
+     * @param TelegramUser|null $user
      *
      * @return MessageEntity
      */
-    public function setUser(?User $user): self
+    public function setUser(?TelegramUser $user): self
     {
         $this->user = $user;
 

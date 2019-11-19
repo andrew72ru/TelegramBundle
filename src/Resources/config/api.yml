@@ -7,15 +7,8 @@ parameters:
       token:
       proxy:
 
-#framework:
-#  serializer:
-#    name_converter: 'serializer.name_converter.camel_case_to_snake_case'
-
 services:
   get_set_method_normalizer:
-    class: Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer
-    public: false
-    tags: [ serializer.normalizer ]
 
   TelegramBundle\Interfaces\SendMessageInterface:
       class: TelegramBundle\SendMessageService

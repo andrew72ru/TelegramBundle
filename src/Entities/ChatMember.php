@@ -15,7 +15,7 @@ namespace TelegramBundle\Entities;
 class ChatMember
 {
     /**
-     * @var User
+     * @var TelegramUser
      */
     private $user;
 
@@ -105,19 +105,19 @@ class ChatMember
     private $canAddWebPagePreviews = false;
 
     /**
-     * @return User
+     * @return TelegramUser
      */
-    public function getUser(): User
+    public function getUser(): TelegramUser
     {
         return $this->user;
     }
 
     /**
-     * @param User $user
+     * @param TelegramUser $user
      *
      * @return ChatMember
      */
-    public function setUser(User $user): self
+    public function setUser(TelegramUser $user): self
     {
         $this->user = $user;
 

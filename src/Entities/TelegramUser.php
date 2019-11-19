@@ -12,7 +12,7 @@ namespace TelegramBundle\Entities;
  *
  * @see https://core.telegram.org/bots/api#user
  */
-class User
+class TelegramUser
 {
     /**
      * @var int Unique identifier for this user or bot
@@ -57,7 +57,7 @@ class User
     /**
      * @param int $id
      *
-     * @return User
+     * @return TelegramUser
      */
     public function setId(int $id): self
     {
@@ -77,7 +77,7 @@ class User
     /**
      * @param bool $isBot
      *
-     * @return User
+     * @return TelegramUser
      */
     public function setIsBot(bool $isBot): self
     {
@@ -97,7 +97,7 @@ class User
     /**
      * @param string $firstName
      *
-     * @return User
+     * @return TelegramUser
      */
     public function setFirstName(string $firstName): self
     {
@@ -117,7 +117,7 @@ class User
     /**
      * @param string|null $lastName
      *
-     * @return User
+     * @return TelegramUser
      */
     public function setLastName(?string $lastName): self
     {
@@ -137,7 +137,7 @@ class User
     /**
      * @param string|null $username
      *
-     * @return User
+     * @return TelegramUser
      */
     public function setUsername(?string $username): self
     {
@@ -157,7 +157,7 @@ class User
     /**
      * @param string|null $languageCode
      *
-     * @return User
+     * @return TelegramUser
      */
     public function setLanguageCode(?string $languageCode): self
     {

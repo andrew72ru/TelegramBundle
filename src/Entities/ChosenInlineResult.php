@@ -20,7 +20,7 @@ class ChosenInlineResult
     private $resultId;
 
     /**
-     * @var User
+     * @var TelegramUser
      */
     private $from;
 
@@ -60,19 +60,19 @@ class ChosenInlineResult
     }
 
     /**
-     * @return User
+     * @return TelegramUser
      */
-    public function getFrom(): User
+    public function getFrom(): TelegramUser
     {
         return $this->from;
     }
 
     /**
-     * @param User $from
+     * @param TelegramUser $from
      *
      * @return ChosenInlineResult
      */
-    public function setFrom(User $from): self
+    public function setFrom(TelegramUser $from): self
     {
         $this->from = $from;
 

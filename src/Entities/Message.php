@@ -21,7 +21,7 @@ class Message
     private $messageId;
 
     /**
-     * @var User
+     * @var TelegramUser
      */
     private $from;
 
@@ -36,7 +36,7 @@ class Message
     private $chat;
 
     /**
-     * @var User|null
+     * @var TelegramUser|null
      */
     private $forwardFrom;
 
@@ -166,12 +166,12 @@ class Message
     private $poll;
 
     /**
-     * @var User[]|null
+     * @var TelegramUser[]|null
      */
     private $newChatMembers;
 
     /**
-     * @var User|null
+     * @var TelegramUser|null
      */
     private $leftChatMember;
 
@@ -272,19 +272,19 @@ class Message
     }
 
     /**
-     * @return User
+     * @return TelegramUser
      */
-    public function getFrom(): User
+    public function getFrom(): TelegramUser
     {
         return $this->from;
     }
 
     /**
-     * @param User $from
+     * @param TelegramUser $from
      *
      * @return Message
      */
-    public function setFrom(User $from): self
+    public function setFrom(TelegramUser $from): self
     {
         $this->from = $from;
 
@@ -332,19 +332,19 @@ class Message
     }
 
     /**
-     * @return User|null
+     * @return TelegramUser|null
      */
-    public function getForwardFrom(): ?User
+    public function getForwardFrom(): ?TelegramUser
     {
         return $this->forwardFrom;
     }
 
     /**
-     * @param User|null $forwardFrom
+     * @param TelegramUser|null $forwardFrom
      *
      * @return Message
      */
-    public function setForwardFrom(?User $forwardFrom): self
+    public function setForwardFrom(?TelegramUser $forwardFrom): self
     {
         $this->forwardFrom = $forwardFrom;
 
@@ -852,7 +852,7 @@ class Message
     }
 
     /**
-     * @return User[]|null
+     * @return TelegramUser[]|null
      */
     public function getNewChatMembers(): ?array
     {
@@ -860,7 +860,7 @@ class Message
     }
 
     /**
-     * @param User[]|null $newChatMembers
+     * @param TelegramUser[]|null $newChatMembers
      *
      * @return Message
      */
@@ -872,19 +872,19 @@ class Message
     }
 
     /**
-     * @return User|null
+     * @return TelegramUser|null
      */
-    public function getLeftChatMember(): ?User
+    public function getLeftChatMember(): ?TelegramUser
     {
         return $this->leftChatMember;
     }
 
     /**
-     * @param User|null $leftChatMember
+     * @param TelegramUser|null $leftChatMember
      *
      * @return Message
      */
-    public function setLeftChatMember(?User $leftChatMember): self
+    public function setLeftChatMember(?TelegramUser $leftChatMember): self
     {
         $this->leftChatMember = $leftChatMember;
 
