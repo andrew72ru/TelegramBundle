@@ -8,8 +8,6 @@ parameters:
       proxy:
 
 services:
-  get_set_method_normalizer:
-
   TelegramBundle\Interfaces\SendMessageInterface:
       class: TelegramBundle\SendMessageService
       public: true
