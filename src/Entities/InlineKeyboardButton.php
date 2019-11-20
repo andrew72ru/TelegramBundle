@@ -191,4 +191,36 @@ class InlineKeyboardButton
 
         return $this;
     }
+
+    /**
+     * @return array
+     */
+    public function __invoke(): array
+    {
+        $result = [
+            'text' => $this->getText(),
+        ];
+
+        if ($this->getUrl()) {
+            $result['url'] = $this->getUrl();
+        }
+
+        if ($this->getCallbackData()) {
+            $result['callback_data'] = $this->getCallbackData();
+        }
+
+        if ($this->isPay()) {
+            $result['pay'] = $this->isPay();
+        }
+
+        if ($this->getSwitchInlineQuery()) {
+            $result['switch_inline_query'] = $this->getSwitchInlineQuery();
+        }
+
+        if ($this->getSwitchInlineQueryCurrentChat()) {
+            $result['switch_inline_query_current_chat'] = $this->getSwitchInlineQueryCurrentChat();
+        }
+
+        return $result;
+    }
 }

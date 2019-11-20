@@ -44,4 +44,35 @@ class InlineKeyboardMarkup
 
         return $this;
     }
+
+
+    /**
+     * @param InlineKeyboardButton $button
+     *
+     * @return InlineKeyboardMarkup
+     */
+    public function addButton(InlineKeyboardButton $button): self
+    {
+        $this->inlineKeyboard[] = [$button()];
+
+        return $this;
+    }
+
+    /**
+     * @param InlineKeyboardButton[] $buttons
+     *
+     * @return InlineKeyboardMarkup
+     */
+    public function addButtonsString(array $buttons): self
+    {
+        $arr = [];
+        foreach ($buttons as $button) {
+            $arr[] = $button();
+        }
+
+        $this->inlineKeyboard[] = $arr;
+
+        return $this;
+    }
+
 }

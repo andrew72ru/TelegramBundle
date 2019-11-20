@@ -7,6 +7,8 @@
 
 namespace TelegramBundle\Methods;
 
+use TelegramBundle\Entities\InlineKeyboardMarkup;
+
 /**
  * Send message with form.
  */
@@ -99,7 +101,9 @@ class SendMessage extends AbstractMethod
         }
 
         if (!empty($this->replyMarkup)) {
-            $result['reply_markup'] = json_encode($this->replyMarkup, JSON_THROW_ON_ERROR);
+            $result['reply_markup'] = (\count($this->replyMarkup) === 1 && \key($this->replyMarkup) === InlineKeyboardMarkup::FIELD_NAME)
+                ? $this->replyMarkup
+                : [InlineKeyboardMarkup::FIELD_NAME => $this->replyMarkup];
         }
 
         return $result;
