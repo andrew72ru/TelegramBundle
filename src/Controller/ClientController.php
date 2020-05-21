@@ -5,7 +5,8 @@ declare(strict_types=1);
 namespace TelegramBundle\Controller;
 
 use Psr\Log\LoggerInterface;
-use Symfony\Component\HttpFoundation\{HeaderUtils, JsonResponse, Request, Response};
+use Symfony\Component\HttpFoundation\{JsonResponse, Request, Response};
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Symfony\Contracts\HttpClient\{
     Exception\ClientExceptionInterface,
@@ -21,17 +22,10 @@ use TelegramBundle\Interfaces\SendMessageInterface;
  * Class ClientController
  * Endpoint to telegram webHook.
  */
-class ClientController
+class ClientController extends AbstractController
 {
-    /**
-     * @var SendMessageInterface
-     */
-    private $sendMessageService;
-
-    /**
-     * @var LoggerInterface
-     */
-    private $logger;
+    private SendMessageInterface $sendMessageService;
+    private LoggerInterface $logger;
 
     /**
      * ClientController constructor.
