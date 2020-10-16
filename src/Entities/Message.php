@@ -1,9 +1,6 @@
 <?php
-/**
- * User: andrew
- * Date: 29/03/2018
- * Time: 15:53.
- */
+
+declare(strict_types=1);
 
 namespace TelegramBundle\Entities;
 
@@ -16,245 +13,245 @@ namespace TelegramBundle\Entities;
 class Message
 {
     /**
-     * @var int
+     * @var int|null
      */
-    private $messageId;
-
-    /**
-     * @var TelegramUser
-     */
-    private $from;
-
-    /**
-     * @var int
-     */
-    private $date;
-
-    /**
-     * @var Chat
-     */
-    private $chat;
+    private ?int $messageId = null;
 
     /**
      * @var TelegramUser|null
      */
-    private $forwardFrom;
+    private ?TelegramUser $from = null;
+
+    /**
+     * @var \DateTimeInterface|null
+     */
+    private ?\DateTimeInterface $date = null;
 
     /**
      * @var Chat|null
      */
-    private $forwardFromChat;
-
-    /**
-     * @var int|null
-     */
-    private $forwardFromMessageId;
-
-    /**
-     * @var string|null
-     */
-    private $forwardSignature;
-
-    /**
-     * @var int|null
-     */
-    private $forwardDate;
-
-    /**
-     * @var Message|null
-     */
-    private $replyToMessage;
-
-    /**
-     * @var int|null
-     */
-    private $editDate;
-
-    /**
-     * @var string|null
-     */
-    private $mediaGroupId;
-
-    /**
-     * @var string|null
-     */
-    private $authorSignature;
-
-    /**
-     * @var string|null
-     */
-    private $text;
-
-    /**
-     * @var MessageEntity[]|array
-     */
-    private $entities = [];
-
-    /**
-     * @var MessageEntity[]|null
-     */
-    private $captionEntities;
-
-    /**
-     * @var Audio|null
-     */
-    private $audio;
-
-    /**
-     * @var Document|null
-     */
-    private $document;
-
-    /**
-     * @var Animation|null
-     */
-    private $animation;
-
-    /**
-     * @var \StdClass|null
-     */
-    private $game;
-
-    /**
-     * @var PhotoSize[]|null
-     */
-    private $photo;
-
-    /**
-     * @var Sticker|null
-     */
-    private $sticker;
-
-    /**
-     * @var Video|null
-     */
-    private $video;
-
-    /**
-     * @var Voice|null
-     */
-    private $voice;
-
-    /**
-     * @var VideoNote|null
-     */
-    private $videoNote;
-
-    /**
-     * @var string|null
-     */
-    private $caption;
-
-    /**
-     * @var Contact|null
-     */
-    private $contact;
-
-    /**
-     * @var Location|null
-     */
-    private $location;
-
-    /**
-     * @var Venue|null
-     */
-    private $venue;
-
-    /**
-     * @var Pool|null
-     */
-    private $poll;
-
-    /**
-     * @var TelegramUser[]|null
-     */
-    private $newChatMembers;
+    private ?Chat $chat = null;
 
     /**
      * @var TelegramUser|null
      */
-    private $leftChatMember;
+    private ?TelegramUser $forwardFrom = null;
+
+    /**
+     * @var Chat|null
+     */
+    private ?Chat $forwardFromChat = null;
+
+    /**
+     * @var int|null
+     */
+    private ?int $forwardFromMessageId = null;
 
     /**
      * @var string|null
      */
-    private $newChatTitle;
-
-    /**
-     * @var PhotoSize[]|null
-     */
-    private $newChatPhoto;
-
-    /**
-     * @var bool
-     */
-    private $deleteChatPhoto = false;
-
-    /**
-     * @var bool
-     */
-    private $groupChatCreated = false;
-
-    /**
-     * @var bool
-     */
-    private $supergroupChatCreated = false;
-
-    /**
-     * @var bool
-     */
-    private $channelChatCreated = false;
+    private ?string $forwardSignature = null;
 
     /**
      * @var int|null
      */
-    private $migrateToChatId;
-
-    /**
-     * @var int|null
-     */
-    private $migrateFromChatId;
+    private ?int $forwardDate = null;
 
     /**
      * @var Message|null
      */
-    private $pinnedMessage;
+    private ?Message $replyToMessage = null;
 
     /**
-     * @var \StdClass|null
-     *
-     * @todo implement
+     * @var int|null
      */
-    private $invoice;
-
-    /**
-     * @var \StdClass|null
-     *
-     * @todo implement
-     */
-    private $successfulPayment;
+    private ?int $editDate = null;
 
     /**
      * @var string|null
      */
-    private $connectedWebsite;
+    private ?string $mediaGroupId = null;
 
     /**
-     * @var \StdClass|null
+     * @var string|null
+     */
+    private ?string $authorSignature = null;
+
+    /**
+     * @var string|null
+     */
+    private ?string $text = null;
+
+    /**
+     * @var MessageEntity[]|array
+     */
+    private array $entities = [];
+
+    /**
+     * @var MessageEntity[]|array
+     */
+    private array $captionEntities = [];
+
+    /**
+     * @var Audio|null
+     */
+    private ?Audio $audio = null;
+
+    /**
+     * @var Document|null
+     */
+    private ?Document $document = null;
+
+    /**
+     * @var Animation|null
+     */
+    private ?Animation $animation = null;
+
+    /**
+     * @var object|null
+     */
+    private ?object $game = null;
+
+    /**
+     * @var PhotoSize[]|null
+     */
+    private ?array $photo = null;
+
+    /**
+     * @var Sticker|null
+     */
+    private ?Sticker $sticker = null;
+
+    /**
+     * @var Video|null
+     */
+    private ?Video $video = null;
+
+    /**
+     * @var Voice|null
+     */
+    private ?Voice $voice = null;
+
+    /**
+     * @var VideoNote|null
+     */
+    private ?VideoNote $videoNote = null;
+
+    /**
+     * @var string|null
+     */
+    private ?string $caption = null;
+
+    /**
+     * @var Contact|null
+     */
+    private ?Contact $contact = null;
+
+    /**
+     * @var Location|null
+     */
+    private ?Location $location = null;
+
+    /**
+     * @var Venue|null
+     */
+    private ?Venue $venue = null;
+
+    /**
+     * @var Pool|null
+     */
+    private ?Pool $poll = null;
+
+    /**
+     * @var TelegramUser[]|null
+     */
+    private ?array $newChatMembers = null;
+
+    /**
+     * @var TelegramUser|null
+     */
+    private ?TelegramUser $leftChatMember = null;
+
+    /**
+     * @var string|null
+     */
+    private ?string $newChatTitle = null;
+
+    /**
+     * @var PhotoSize[]|null
+     */
+    private ?array $newChatPhoto = null;
+
+    /**
+     * @var bool
+     */
+    private bool $deleteChatPhoto = false;
+
+    /**
+     * @var bool
+     */
+    private bool $groupChatCreated = false;
+
+    /**
+     * @var bool
+     */
+    private bool $supergroupChatCreated = false;
+
+    /**
+     * @var bool
+     */
+    private bool $channelChatCreated = false;
+
+    /**
+     * @var int|null
+     */
+    private ?int $migrateToChatId = null;
+
+    /**
+     * @var int|null
+     */
+    private ?int $migrateFromChatId = null;
+
+    /**
+     * @var Message|null
+     */
+    private ?Message $pinnedMessage = null;
+
+    /**
+     * @var object|null
      *
      * @todo implement
      */
-    private $passportData;
+    private ?object $invoice = null;
+
+    /**
+     * @var object|null
+     *
+     * @todo implement
+     */
+    private ?object $successfulPayment = null;
+
+    /**
+     * @var string|null
+     */
+    private ?string $connectedWebsite = null;
+
+    /**
+     * @var object|null
+     *
+     * @todo implement
+     */
+    private ?object $passportData = null;
 
     /**
      * @var InlineKeyboardMarkup|null
      */
-    private $replyMarkup;
+    private ?InlineKeyboardMarkup $replyMarkup = null;
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getMessageId(): int
+    public function getMessageId(): ?int
     {
         return $this->messageId;
     }
@@ -272,9 +269,9 @@ class Message
     }
 
     /**
-     * @return TelegramUser
+     * @return TelegramUser|null
      */
-    public function getFrom(): TelegramUser
+    public function getFrom(): ?TelegramUser
     {
         return $this->from;
     }
@@ -292,19 +289,19 @@ class Message
     }
 
     /**
-     * @return int
+     * @return \DateTimeInterface|null
      */
-    public function getDate(): int
+    public function getDate(): ?\DateTimeInterface
     {
         return $this->date;
     }
 
     /**
-     * @param int $date
+     * @param \DateTimeInterface $date
      *
      * @return Message
      */
-    public function setDate(int $date): self
+    public function setDate(\DateTimeInterface $date): self
     {
         $this->date = $date;
 
@@ -312,9 +309,9 @@ class Message
     }
 
     /**
-     * @return Chat
+     * @return Chat|null
      */
-    public function getChat(): Chat
+    public function getChat(): ?Chat
     {
         return $this->chat;
     }
@@ -534,7 +531,7 @@ class Message
     /**
      * @return array|MessageEntity[]
      */
-    public function getEntities()
+    public function getEntities(): array
     {
         return $this->entities;
     }
@@ -544,9 +541,33 @@ class Message
      *
      * @return Message
      */
-    public function setEntities($entities)
+    public function setEntities(array $entities): self
     {
         $this->entities = $entities;
+
+        return $this;
+    }
+
+    /**
+     * @param MessageEntity $entity
+     *
+     * @return $this
+     */
+    public function addEntity(MessageEntity $entity): self
+    {
+        if (\in_array($entity, $this->entities, true) === false) {
+            $this->entities[] = $entity;
+        }
+
+        return $this;
+    }
+
+    public function removeEntity(MessageEntity $entity): self
+    {
+        $key = \array_search($entity, $this->entities, true);
+        if ($key !== false) {
+            unset($this->entities[$key]);
+        }
 
         return $this;
     }
@@ -566,7 +587,7 @@ class Message
      */
     public function setCaptionEntities(?array $captionEntities): self
     {
-        $this->captionEntities = $captionEntities;
+        $this->captionEntities = $captionEntities ?? [];
 
         return $this;
     }
@@ -632,19 +653,19 @@ class Message
     }
 
     /**
-     * @return \StdClass|null
+     * @return object|null
      */
-    public function getGame(): ?\StdClass
+    public function getGame(): ?object
     {
         return $this->game;
     }
 
     /**
-     * @param \StdClass|null $game
+     * @param object|null $game
      *
      * @return Message
      */
-    public function setGame(?\StdClass $game): self
+    public function setGame(?object $game): self
     {
         $this->game = $game;
 
@@ -1072,19 +1093,19 @@ class Message
     }
 
     /**
-     * @return \StdClass|null
+     * @return object|null
      */
-    public function getInvoice(): ?\StdClass
+    public function getInvoice(): ?object
     {
         return $this->invoice;
     }
 
     /**
-     * @param \StdClass|null $invoice
+     * @param object|null $invoice
      *
      * @return Message
      */
-    public function setInvoice(?\StdClass $invoice): self
+    public function setInvoice(?object $invoice): self
     {
         $this->invoice = $invoice;
 
@@ -1092,19 +1113,19 @@ class Message
     }
 
     /**
-     * @return \StdClass|null
+     * @return object|null
      */
-    public function getSuccessfulPayment(): ?\StdClass
+    public function getSuccessfulPayment(): ?object
     {
         return $this->successfulPayment;
     }
 
     /**
-     * @param \StdClass|null $successfulPayment
+     * @param object|null $successfulPayment
      *
      * @return Message
      */
-    public function setSuccessfulPayment(?\StdClass $successfulPayment): self
+    public function setSuccessfulPayment(?object $successfulPayment): self
     {
         $this->successfulPayment = $successfulPayment;
 
@@ -1132,19 +1153,19 @@ class Message
     }
 
     /**
-     * @return \StdClass|null
+     * @return object|null
      */
-    public function getPassportData(): ?\StdClass
+    public function getPassportData(): ?object
     {
         return $this->passportData;
     }
 
     /**
-     * @param \StdClass|null $passportData
+     * @param object|null $passportData
      *
      * @return Message
      */
-    public function setPassportData(?\StdClass $passportData): self
+    public function setPassportData(?object $passportData): self
     {
         $this->passportData = $passportData;
 

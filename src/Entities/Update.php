@@ -15,60 +15,60 @@ use Symfony\Contracts\HttpClient\ResponseInterface;
 class Update
 {
     /**
-     * @var int The update‘s unique identifier. Update identifiers start from a certain positive number and increase sequentially. This ID becomes especially handy if you’re using Webhooks, since it allows you to ignore repeated updates or to restore the correct update sequence, should they get out of order. If there are no new updates for at least a week, then identifier of the next update will be chosen randomly instead of sequentially.
+     * @var int|null The update‘s unique identifier. Update identifiers start from a certain positive number and increase sequentially. This ID becomes especially handy if you’re using Webhooks, since it allows you to ignore repeated updates or to restore the correct update sequence, should they get out of order. If there are no new updates for at least a week, then identifier of the next update will be chosen randomly instead of sequentially.
      */
-    private $updateId;
+    private ?int $updateId = null;
 
     /**
      * @var Message|null Optional. New incoming message of any kind — text, photo, sticker, etc.
      */
-    private $message;
+    private ?Message $message = null;
 
     /**
      * @var Message|null Optional. New version of a message that is known to the bot and was edited
      */
-    private $editedMessage;
+    private ?Message $editedMessage = null;
 
     /**
      * @var Message|null Optional. New incoming channel post of any kind — text, photo, sticker, etc.
      */
-    private $channelPost;
+    private ?Message $channelPost = null;
 
     /**
      * @var Message|null Optional. New version of a channel post that is known to the bot and was edited
      */
-    private $editedChannelPost;
+    private ?Message $editedChannelPost = null;
 
     /**
      * @var InlineQuery|null InlineQuery Optional. New incoming inline query
      *
      * @see https://core.telegram.org/bots/api#inlinequery
      */
-    private $inlineQuery;
+    private ?InlineQuery $inlineQuery = null;
 
     /**
      * @var ChosenInlineResult|null ChosenInlineResult Optional. The result of an inline query that was chosen by a user and sent to their chat partner.
      *
      * @see https://core.telegram.org/bots/api#choseninlineresult
      */
-    private $chosenInlineResult;
+    private ?ChosenInlineResult $chosenInlineResult = null;
 
     /**
      * @var CallbackQuery|null CallbackQuery Optional. New incoming callback query
      *
      * @see https://core.telegram.org/bots/api#callbackquery
      */
-    private $callbackQuery;
+    private ?CallbackQuery $callbackQuery = null;
 
     /**
      * @var ResponseInterface|null
      */
-    private $response;
+    private ?ResponseInterface $response = null;
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getUpdateId(): int
+    public function getUpdateId(): ?int
     {
         return $this->updateId;
     }

@@ -8,7 +8,6 @@
 namespace TelegramBundle\Methods;
 
 use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
-use Symfony\Contracts\HttpClient\HttpClientInterface;
 use Symfony\Contracts\HttpClient\ResponseInterface;
 use TelegramBundle\Interfaces\MethodInterface;
 use TelegramBundle\Interfaces\SendMessageInterface;
@@ -29,9 +28,10 @@ abstract class AbstractMethod implements MethodInterface
      * Send message to bot url with parameters with http-client.
      *
      * @param SendMessageInterface $service
-     * @param array $options
+     * @param array                $options
      *
      * @return ResponseInterface
+     *
      * @throws TransportExceptionInterface
      */
     public function send(SendMessageInterface $service, $options = []): ResponseInterface

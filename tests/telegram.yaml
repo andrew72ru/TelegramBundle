@@ -1,0 +1,21 @@
+parameters:
+  tg_bot_name:        '%env(TG_BOT_NAME)%'
+  tg_bot_username:    '%env(TG_BOT_USERNAME)%'
+  tg_api_url:         '%env(TG_BOT_API)%'
+  tg_token:           '%env(TG_BOT_TOKEN)%'
+  tg_proxy: ~
+
+telegram:
+  name: '%tg_bot_name%'
+  username: '%tg_bot_username%'
+  api:
+    url: '%tg_api_url%'
+    token: '%tg_token%'
+    proxy: '%tg_proxy%'
+
+services:
+  TelegramBundle\Interfaces\SendMessageInterface:
+    class: TelegramBundle\SendMessageService
+    autowire: true
+    autoconfigure: true
+    public: true

@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace TelegramBundle\Controller;
 
 use Psr\Log\LoggerInterface;
-use Symfony\Component\HttpFoundation\{JsonResponse, Request, Response};
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\{JsonResponse, Request, Response};
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Symfony\Contracts\HttpClient\{
     Exception\ClientExceptionInterface,

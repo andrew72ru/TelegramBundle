@@ -93,8 +93,9 @@ class SendMessage extends AbstractMethod
             'disable_web_page_preview' => $this->disableWebPagePreview,
             'disable_notification' => $this->disableNotification,
         ]);
-        if ($this->parseMode !== null)
+        if ($this->parseMode !== null) {
             $result['parse_mode'] = $this->parseMode;
+        }
 
         if (null !== $this->replyToMessage_id) {
             $result['reply_to_message_id'] = $this->replyToMessage_id;

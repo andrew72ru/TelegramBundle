@@ -1,0 +1,30 @@
+{
+  "update_id": 615321736,
+  "message": {
+    "message_id": 3112,
+    "from": {
+      "id": 77363009,
+      "is_bot": false,
+      "first_name": "Vladimir",
+      "last_name": "Pushkarev",
+      "username": "vladpoosh",
+      "language_code": "ru"
+    },
+    "chat": {
+      "id": 77363009,
+      "first_name": "Vladimir",
+      "last_name": "Pushkarev",
+      "username": "vladpoosh",
+      "type": "private"
+    },
+    "date": 1602830435,
+    "text": "/code 12e22c394ce411e7a4fb71fb7dae81c89cca5790283db886966b4fc2a22356f4",
+    "entities": [
+      {
+        "offset": 0,
+        "length": 5,
+        "type": "bot_command"
+      }
+    ]
+  }
+}
