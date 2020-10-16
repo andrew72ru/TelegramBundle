@@ -9,7 +9,6 @@ use Symfony\Contracts\EventDispatcher\Event;
 use TelegramBundle\Entities\Update;
 use TelegramBundle\Interfaces\SendMessageInterface;
 use TelegramBundle\Interfaces\TelegramEventInterface;
-use TelegramBundle\SendMessageService;
 
 /**
  * Class AbstractEvent.

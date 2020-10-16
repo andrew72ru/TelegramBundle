@@ -10,16 +10,18 @@ parameters:
 services:
   TelegramBundle\Interfaces\SendMessageInterface:
       class: TelegramBundle\SendMessageService
-      public: true
-      arguments:
-        - '@service_container'
-        - '@event_dispatcher'
-        - '@serializer'
+      autowire: true
+      autoconfigure: true
 
   TelegramBundle\Controller\ClientController:
       class: TelegramBundle\Controller\ClientController
       public: true
       arguments:
         - '@TelegramBundle\Interfaces\SendMessageInterface'
-        - '@monolog.logger'
+        - '@logger'
       tags: [ 'controller.service_arguments' ]
+
+  TelegramBundle\Serializer\DateTimeNormalizer:
+    decorates: 'serializer.normalizer.datetime'
+    autoconfigure: true
+    autowire: true

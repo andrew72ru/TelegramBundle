@@ -14,26 +14,23 @@
     "php": ">=7.4",
     "ext-json": "*",
     "psr/log": "^1.1",
-    "symfony/dependency-injection": "^4.4|^5.0",
-    "symfony/event-dispatcher": "^4.4|^5.0",
-    "symfony/http-client": "^4.4|^5.0",
-    "symfony/http-foundation": "^4.4|^5.0",
-    "symfony/http-kernel": "^4.4|^5.0",
-    "symfony/property-access": "^4.4|^5.0",
-    "symfony/property-info": "^4.4|^5.0",
-    "symfony/serializer": "^4.4|^5.0"
+    "symfony/dependency-injection": "^4.4|^5",
+    "symfony/event-dispatcher": "^4.4|^5",
+    "symfony/http-client": "^4.4|^5",
+    "symfony/http-foundation": "^4.4|^5",
+    "symfony/http-kernel": "^4.4|^5",
+    "symfony/property-access": "^4.4|^5",
+    "symfony/property-info": "^4.4|^5",
+    "symfony/serializer": "^4.4|^5",
+    "symfony/yaml": "^5.1"
   },
   "require-dev": {
-    "codedungeon/phpunit-result-printer": "^0.26.2",
-    "flow/jsonpath": "^0.4.0",
-    "friendsofphp/php-cs-fixer": "^2.16",
-    "fzaninotto/faker": "^1.8",
-    "phpunit/phpunit": "^8.4",
+    "friendsofphp/php-cs-fixer": "^2",
+    "fzaninotto/faker": "^1.9",
     "symfony/debug-pack": "^1.0",
-    "symfony/dotenv": "^4.3",
-    "symfony/phpunit-bridge": "^4.3",
-    "symfony/profiler-pack": "^1.0",
-    "vimeo/psalm": "^3.6"
+    "symfony/dotenv": "^5.1",
+    "symfony/phpunit-bridge": "^5.1",
+    "symfony/profiler-pack": "^1.0"
   },
   "config": {
     "preferred-install": {

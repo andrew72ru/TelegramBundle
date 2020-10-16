@@ -9,23 +9,24 @@ declare(strict_types=1);
 
 namespace TelegramBundle;
 
-use Symfony\Component\DependencyInjection\ContainerInterface;
+use Doctrine\Common\{Annotations\AnnotationException, Annotations\AnnotationReader, Annotations\DocParser};
+use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Component\HttpClient\HttpClient;
-use Symfony\Component\HttpFoundation\{Request, Response};
-use Symfony\Component\HttpKernel\Exception\HttpException;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\PropertyAccess\PropertyAccess;
 use Symfony\Component\PropertyInfo\Extractor\ReflectionExtractor;
-use Symfony\Component\Serializer\Encoder\JsonEncoder;
-use Symfony\Component\Serializer\Normalizer\ArrayDenormalizer;
-use Symfony\Component\Serializer\Normalizer\DateTimeNormalizer;
-use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
-use Symfony\Component\Serializer\NameConverter\CamelCaseToSnakeCaseNameConverter;
-use Symfony\Component\Serializer\Serializer;
-use Symfony\Component\Serializer\SerializerInterface;
+use Symfony\Component\Serializer\{
+    Encoder\JsonEncoder,
+    Mapping\Factory\ClassMetadataFactory,
+    Mapping\Loader\AnnotationLoader,
+    NameConverter\CamelCaseToSnakeCaseNameConverter,
+    Normalizer\ArrayDenormalizer,
+    Normalizer\ObjectNormalizer,
+    Serializer,
+    SerializerInterface
+};
 use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 use Symfony\Contracts\HttpClient\{
-    Exception\ClientExceptionInterface,
-    Exception\RedirectionExceptionInterface,
-    Exception\ServerExceptionInterface,
     Exception\TransportExceptionInterface,
     HttpClientInterface,
     ResponseInterface
@@ -34,59 +35,62 @@ use TelegramBundle\Entities\Update;
 use TelegramBundle\Events\{AbstractEvent, CallbackQueryEvent, CommandEvent};
 use TelegramBundle\Exceptions\TelegramException;
 use TelegramBundle\Interfaces\MethodInterface;
+use TelegramBundle\Serializer\DateTimeNormalizer;
 
 /**
  * Class SendMessage.
  */
 class SendMessageService implements Interfaces\SendMessageInterface
 {
-    /**
-     * @var HttpClientInterface
-     */
-    private $client;
-
-    /**
-     * @var string
-     */
-    private $apiUrl;
-
-    /**
-     * @var EventDispatcherInterface
-     */
-    private $dispatcher;
-
-    /**
-     * @var SerializerInterface
-     */
-    private $serializer;
+    private HttpClientInterface $client;
+    private string $apiUrl;
+    private EventDispatcherInterface $dispatcher;
+    private SerializerInterface $serializer;
+    private DateTimeNormalizer $dateTimeNormalizer;
 
     /**
      * SendMessage constructor.
      *
-     * @param ContainerInterface       $container
+     * @param ParameterBagInterface    $container
+     * @param DateTimeNormalizer       $dateTimeNormalizer
      * @param EventDispatcherInterface $dispatcher
-     * @param SerializerInterface      $serializer
      */
-    public function __construct(ContainerInterface $container, EventDispatcherInterface $dispatcher, SerializerInterface $serializer)
+    public function __construct(ParameterBagInterface $container, DateTimeNormalizer $dateTimeNormalizer, EventDispatcherInterface $dispatcher)
     {
         $this->dispatcher = $dispatcher;
-        $this->apiUrl = sprintf('/bot%s', $container->getParameter('telegram.api.token'));
+        $this->dateTimeNormalizer = $dateTimeNormalizer;
+        $this->apiUrl = sprintf('/bot%s', $container->get('telegram.api.token'));
 
-        $this->client = HttpClient::create([
+        $this->client = $this->createClient($container);
+        $this->serializer = $this->createSerializer();
+    }
+
+    protected function createSerializer(): SerializerInterface
+    {
+        try {
+            $reader = new AnnotationReader(new DocParser());
+        } catch (AnnotationException $e) {
+            throw new \RuntimeException($e->getMessage(), (int) $e->getCode(), $e);
+        }
+        $metadataFactory = new ClassMetadataFactory(new AnnotationLoader($reader));
+        $objectNormalizer = new ObjectNormalizer($metadataFactory, new CamelCaseToSnakeCaseNameConverter(), PropertyAccess::createPropertyAccessor(), new ReflectionExtractor());
+
+        return new Serializer([$objectNormalizer, $this->dateTimeNormalizer, new ArrayDenormalizer()], [new JsonEncoder()]);
+    }
+
+    protected function createClient(ParameterBagInterface $parameterBag): HttpClientInterface
+    {
+        $parameters = [
             'http_version' => '2.0',
-            'base_uri' => rtrim($container->getParameter('telegram.api.url'), '/'),
-            'resolve' => ['api.telegram.org' => '443:149.154.167.220'],
-            'headers' => [
-                'Content-Type' => 'application/json',
-            ],
-        ]);
-        $this->serializer = new Serializer([
-            new ObjectNormalizer(null, new CamelCaseToSnakeCaseNameConverter(), null, new ReflectionExtractor()),
-            new DateTimeNormalizer(),
-            new ArrayDenormalizer(),
-        ], [
-            new JsonEncoder(),
-        ]);
+            'base_uri' => \rtrim($parameterBag->get('telegram.api.url'), '/'),
+            'headers' => ['Content-Type' => 'application/json'],
+        ];
+
+        if ($parameterBag->has('telegram_resolve') && \is_array($parameterBag->get('telegram_resolve'))) {
+            $parameters['resolve'] = $parameterBag->get('telegram_resolve');
+        }
+
+        return HttpClient::create($parameters);
     }
 
     /**
@@ -130,11 +134,14 @@ class SendMessageService implements Interfaces\SendMessageInterface
     public function processRequest(Request $request): Update
     {
         try {
-            /** @var Update $update */
             $update = $this->serializer->deserialize((string) $request->getContent(), Update::class, 'json');
         } catch (\Throwable $e) {
             throw new TelegramException(\sprintf('Unable to deserialize content: %s', $e->getMessage()));
         }
+        if (!$update instanceof Update) {
+            throw new TelegramException(\sprintf('Deserialized data must be an %s class, % given', Update::class, (\is_object($update) ? \get_class($update) : \gettype($update))));
+        }
+
         $this->callEvent($request, $update);
 
         return $update;

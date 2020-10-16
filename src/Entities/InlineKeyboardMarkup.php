@@ -45,7 +45,6 @@ class InlineKeyboardMarkup
         return $this;
     }
 
-
     /**
      * @param InlineKeyboardButton $button
      *
@@ -74,5 +73,4 @@ class InlineKeyboardMarkup
 
         return $this;
     }
-
 }

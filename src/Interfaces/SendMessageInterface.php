@@ -30,6 +30,7 @@ interface SendMessageInterface
      * @param array           $options
      *
      * @return ResponseInterface
+     *
      * @throws TransportExceptionInterface
      */
     public function getResponse(MethodInterface $method, array $options = []): ResponseInterface;
