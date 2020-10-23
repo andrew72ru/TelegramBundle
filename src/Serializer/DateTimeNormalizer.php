@@ -20,6 +20,7 @@ use Symfony\Component\Serializer\Normalizer\{
     DenormalizerInterface,
     NormalizerInterface
 };
+use DateTimeInterface;
 
 class DateTimeNormalizer implements NormalizerInterface, DenormalizerInterface, CacheableSupportsMethodInterface
 {
@@ -56,7 +57,7 @@ class DateTimeNormalizer implements NormalizerInterface, DenormalizerInterface, 
     public function denormalize($data, string $type, string $format = null, array $context = [])
     {
         if (\is_numeric($data)) {
-            $data = \date_create((string) $data);
+            $data = \date_create((string) $data)->format(DateTimeInterface::ATOM);
         }
 
         return $this->inner->denormalize($data, $type, $format, $context);
