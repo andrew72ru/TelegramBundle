@@ -1,0 +1,23 @@
+{
+  "update_id": 615321794,
+  "message": {
+    "message_id": 4566,
+    "from": {
+      "id": 77014842,
+      "is_bot": false,
+      "first_name": "Nuran",
+      "last_name": "Zulfigarov",
+      "username": "nzulfigarov",
+      "language_code": "ru"
+    },
+    "chat": {
+      "id": 77014842,
+      "first_name": "Nuran",
+      "last_name": "Zulfigarov",
+      "username": "nzulfigarov",
+      "type": "private"
+    },
+    "date": 1603717212,
+    "text": "\u043d\u0435 \u0440\u0430\u0431\u043e\u0442\u0430\u0435\u0442"
+  }
+}

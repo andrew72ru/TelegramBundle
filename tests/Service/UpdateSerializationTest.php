@@ -64,6 +64,18 @@ class UpdateSerializationTest extends KernelTestCase
         self::assertInstanceOf(Message::class, $result->getMessage());
     }
 
+    public function testRequestProcessWithWrongData(): void
+    {
+        $contents = \file_get_contents(\dirname(__DIR__) . '/data/wrong-command.json');
+
+        $request = Request::create('/webhook', 'POST', [], [], [], [], $contents);
+        /** @var Update $result */
+        $result = $this->service->processRequest($request);
+
+        self::assertInstanceOf(Update::class, $result);
+        self::assertInstanceOf(Message::class, $result->getMessage());
+    }
+
     public function testMessageParts(): void
     {
         $message = $this->getMessage();

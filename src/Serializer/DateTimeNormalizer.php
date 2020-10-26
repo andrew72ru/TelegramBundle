@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace TelegramBundle\Serializer;
 
+use DateTimeInterface;
 use Symfony\Component\Serializer\Exception\{
     BadMethodCallException,
     CircularReferenceException,
@@ -20,7 +21,6 @@ use Symfony\Component\Serializer\Normalizer\{
     DenormalizerInterface,
     NormalizerInterface
 };
-use DateTimeInterface;
 
 class DateTimeNormalizer implements NormalizerInterface, DenormalizerInterface, CacheableSupportsMethodInterface
 {
@@ -57,7 +57,10 @@ class DateTimeNormalizer implements NormalizerInterface, DenormalizerInterface, 
     public function denormalize($data, string $type, string $format = null, array $context = [])
     {
         if (\is_numeric($data)) {
-            $data = \date_create((string) $data)->format(DateTimeInterface::ATOM);
+            $dt = \date_create()->setTimestamp((int) $data);
+            if ($dt instanceof \DateTimeInterface) {
+                $data = $dt->format(DateTimeInterface::ATOM);
+            }
         }
 
         return $this->inner->denormalize($data, $type, $format, $context);
