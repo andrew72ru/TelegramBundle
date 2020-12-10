@@ -13,6 +13,8 @@
   "require": {
     "php": ">=7.4 || >=8.0",
     "ext-json": "*",
+    "doctrine/annotations": "^1.11",
+    "doctrine/collections": "^1.6",
     "psr/log": "*",
     "symfony/dependency-injection": "^5.2",
     "symfony/event-dispatcher": "^5.2",
