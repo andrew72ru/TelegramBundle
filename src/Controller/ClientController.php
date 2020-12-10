@@ -45,7 +45,6 @@ class ClientController extends AbstractController
             'tag' => 'telegram.request',
         ]);
         try {
-            /** @var Update $update */
             $update = $this->sendMessageService->processRequest($request);
         } catch (TelegramException $e) {
             throw new BadRequestHttpException('Wrong data: ' . $e->getMessage());

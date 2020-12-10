@@ -19,3 +19,4 @@ services:
     autowire: true
     autoconfigure: true
     public: true
+    tags: ['controller.service_arguments']
